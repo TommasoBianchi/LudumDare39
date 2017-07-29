@@ -1,9 +1,17 @@
 fileFormatVersion: 2
-guid: 1b7549d765cc525498934660cfb18ba3
-timeCreated: 1501358932
+guid: 8456f7cda91a1a64eb66549afc746f68
+timeCreated: 1501359067
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: move_sx&dx_0
+    21300002: move_sx&dx_1
+    21300004: move_sx&dx_2
+    21300006: move_sx&dx_3
+    21300008: move_sx&dx_4
+    21300010: move_sx&dx_5
+    21300012: move_sx&dx_6
+    21300014: move_sx&dx_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +66,121 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: move_sx&dx_0
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 483
+        width: 249
+        height: 363
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_1
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 483
+        width: 264
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_2
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 488
+        width: 249
+        height: 361
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_3
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 488
+        width: 264
+        height: 343
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 348
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_5
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 0
+        width: 347
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_6
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 0
+        width: 361
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_7
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 0
+        width: 337
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

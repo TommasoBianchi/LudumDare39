@@ -1,9 +1,15 @@
 fileFormatVersion: 2
-guid: d98922acb40f89f48a2b4fa524db1015
-timeCreated: 1501358933
+guid: 273305b4a75e2bb4db3dcaa570709486
+timeCreated: 1501363372
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: move_down&up_0
+    21300002: move_down&up_1
+    21300004: move_down&up_2
+    21300006: move_down&up_3
+    21300008: move_down&up_4
+    21300010: move_down&up_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +64,95 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: move_down&up_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 639
+        width: 207
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_down&up_1
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 639
+        width: 207
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_down&up_2
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 639
+        width: 206
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_down&up_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1
+        width: 210
+        height: 369
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_down&up_4
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 0
+        width: 210
+        height: 369
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_down&up_5
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 1
+        width: 208
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
