@@ -10,8 +10,8 @@ public class Witch : MonoBehaviour {
 	private bool followPlayer = false;
 
 
-	public float hp {get; private set;};
-	public float maxHp {get; private set;};
+	public float hp {get; private set;}
+	public float maxHp {get; private set;}
 
 	[SerializeField]
 	private float baseDamage;
@@ -34,7 +34,7 @@ public class Witch : MonoBehaviour {
 	[SerializeField]
 	private int shieldSoulDrain;
 
-	public int maxSoulNumber{get; private set;};
+	public int maxSoulNumber{get; private set;}
 
 	public int souls {get; private set;}
 
