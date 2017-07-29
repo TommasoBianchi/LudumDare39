@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
 
     Dictionary<TileType, Dictionary<TileType, Sprite>> borders;
 
-    public Sprite getBorder(TileType oneSide, TileType otherSide)
+    public Sprite GetBorder(TileType oneSide, TileType otherSide)
     {
         if (borders == null)
         {
@@ -127,10 +127,18 @@ public class GameManager : MonoBehaviour
 
         if (borders.ContainsKey(oneSide) && borders[oneSide].ContainsKey(otherSide))
             return borders[oneSide][otherSide];
-        //if (borders.ContainsKey(otherSide) && borders[otherSide].ContainsKey(oneSide))
-        //    return borders[otherSide][oneSide];
 
         return null;
+    }
+
+    public MapChunk GetChunkAt(int x, int y)
+    {
+        Vector2 position = new Vector2(x, y);
+
+        if (chunks.ContainsKey(position))
+            return chunks[position];
+        else
+            return null;
     }
 
     [System.Serializable]

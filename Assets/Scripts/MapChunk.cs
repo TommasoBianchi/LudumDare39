@@ -67,50 +67,46 @@ public class MapChunk : MonoBehaviour
             }
         }
 
-        for (int x = 1; x < size - 1; x++)
+        for (int x = 0; x < size; x++)
         {
-            for (int y = 1; y < size - 1; y++)
+            for (int y = 0; y < size; y++)
             {
                 // Instantiate border to the right
-                Sprite rightBorderSprite = gameManager.getBorder(map[x, y], map[x + 1, y]);
+                Sprite rightBorderSprite = (x < size - 1) ? gameManager.GetBorder(map[x, y], map[x + 1, y]) : null;
                 if (rightBorderSprite != null)
                 {
-                    GameObject border = Instantiate(borderPrefab, transform);
-                    border.GetComponent<SpriteRenderer>().sprite = rightBorderSprite;
-                    border.transform.localPosition = new Vector2(x + 0.5f, y);
-                    border.transform.Rotate(0, 0, 0);
+                    InstantiateBorder(x, y, rightBorderSprite, new Vector2(0.5f, 0), 0);
                 }
 
                 // Instantiate border to the left
-                Sprite leftBorderSprite = gameManager.getBorder(map[x, y], map[x - 1, y]);
+                Sprite leftBorderSprite = (x > 0) ? gameManager.GetBorder(map[x, y], map[x - 1, y]) : null;
                 if (leftBorderSprite != null)
                 {
-                    GameObject border = Instantiate(borderPrefab, transform);
-                    border.GetComponent<SpriteRenderer>().sprite = leftBorderSprite;
-                    border.transform.localPosition = new Vector2(x - 0.5f, y);
-                    border.transform.Rotate(0, 0, 180);
+                    InstantiateBorder(x, y, leftBorderSprite, new Vector2(-0.5f, 0), 180);
                 }
 
                 // Instantiate border to the top
-                Sprite topBorderSprite = gameManager.getBorder(map[x, y], map[x, y + 1]);
+                Sprite topBorderSprite = (y < size - 1) ? gameManager.GetBorder(map[x, y], map[x, y + 1]) : null;
                 if (topBorderSprite != null)
                 {
-                    GameObject border = Instantiate(borderPrefab, transform);
-                    border.GetComponent<SpriteRenderer>().sprite = topBorderSprite;
-                    border.transform.localPosition = new Vector2(x, y + 0.5f);
-                    border.transform.Rotate(0, 0, 90);
+                    InstantiateBorder(x, y, topBorderSprite, new Vector2(0, 0.5f), 90);
                 }
 
                 // Instantiate border to the bottom
-                Sprite bottomBorderSprite = gameManager.getBorder(map[x, y], map[x, y - 1]);
+                Sprite bottomBorderSprite = (y > 0) ? gameManager.GetBorder(map[x, y], map[x, y - 1]) : null;
                 if (bottomBorderSprite != null)
                 {
-                    GameObject border = Instantiate(borderPrefab, transform);
-                    border.GetComponent<SpriteRenderer>().sprite = bottomBorderSprite;
-                    border.transform.localPosition = new Vector2(x, y - 0.5f);
-                    border.transform.Rotate(0, 0, -90);
+                    InstantiateBorder(x, y, bottomBorderSprite, new Vector2(0, -0.5f), -90);
                 }
             }
         }
+    }
+
+    private void InstantiateBorder(int x, int y, Sprite rightBorderSprite, Vector2 offset, int zRotatation)
+    {
+        GameObject border = Instantiate(borderPrefab, transform);
+        border.GetComponent<SpriteRenderer>().sprite = rightBorderSprite;
+        border.transform.localPosition = new Vector2(x, y) + offset;
+        border.transform.Rotate(0, 0, zRotatation);
     }
 }
