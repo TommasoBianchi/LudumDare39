@@ -6,13 +6,12 @@ public class Witch : MonoBehaviour {
 
 	private int initialSouls = 100;
 
-	private Transform player;
-
 	[SerializeField]
-	private int shieldSoulDrain = 1;
+	private bool followPlayer = false;
 
-	[SerializeField]
-	private float hp;
+
+	public float hp {get; private set;};
+	public float maxHp {get; private set;};
 
 	[SerializeField]
 	private float baseDamage;
@@ -32,15 +31,16 @@ public class Witch : MonoBehaviour {
 	[SerializeField]
 	private Dictionary<string , string> skillset;
 
+	[SerializeField]
+	private int shieldSoulDrain;
+
+	public int maxSoulNumber{get; private set;};
+
 	public int souls {get; private set;}
 
+	private GameObject player;
 
-
-	private GameObject witch;
-
-	// Use this for initialization
 	void Start () {
-		witch = GameObject.FindGameObjectWithTag ("Witch");
 		player = GameObject.FindGameObjectWithTag ("Player");
 		souls = initialSouls;
 
@@ -50,25 +50,19 @@ public class Witch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		soulDrainRate ();
-		startFollowPlayer ();
+		//startFollowPlayer ();
 		endFollowPlayer ();
+		/*if(follow){
+			startFollowPlayer ();
+		}
+		else{
+			endFollowPlayer();
+		}
+		*/
 	}
 
 
-	public Vector3 offset = new Vector3(0f, 7.5f, 0f);
 
-
-	private void LateUpdate()
-	{
-		transform.position = target.position + offset;
-	}
-
-
-	void startFollowPlayer(){
-	
-
-
-	}
 
 	void endFollowPlayer(){
 

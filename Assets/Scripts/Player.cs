@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	[SerializeField]
-	private float hp;
+	public float hp {get; private set;}
+	public float maxHp {get; private set;}
 
 	[SerializeField]
 	private float baseDamage;
@@ -23,12 +23,9 @@ public class Player : MonoBehaviour {
 	private float fogOfWarRadius;
 
 
-	private GameObject player;
-
-
 	// Use this for initialization
 	void Start (){
-		player = GameObject.FindGameObjectWithTag ("Player");
+		
 	}
 	
 	// Update is called once per frame
