@@ -29,6 +29,8 @@ public class MapChunk : MonoBehaviour
     private GameManager gameManager;
     private System.Random random;
 
+    private GameManager.TileType[,] map;
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -43,7 +45,7 @@ public class MapChunk : MonoBehaviour
 
     void Generate()
     {
-        GameManager.TileType[,] map = new GameManager.TileType[size, size];
+        map = new GameManager.TileType[size, size];
         Debug.Log(size);
 
         for (int x = 0; x < size; x++)
@@ -100,9 +102,39 @@ public class MapChunk : MonoBehaviour
                 }
             }
         }
+
+        MapChunk leftMapChunk = gameManager.GetChunkAt((int)center.x - 1, (int)center.y);
+        if (leftMapChunk != null && leftMapChunk.map != null)
+        {
+            for (int y = 0; y < size; y++)
+            {
+                Sprite leftBorderSprite = gameManager.GetBorder(map[0, y], leftMapChunk.map[size - 1, y]);
+                if (leftBorderSprite != null)
+                {
+                    InstantiateBorder(0, y, leftBorderSprite, new Vector2(-0.5f, 0), 180);
+                }
+            }
+        }
+
+        MapChunk rightMapChunk = gameManager.GetChunkAt((int)center.x + 1, (int)center.y);
+        if (rightMapChunk != null && rightMapChunk.map != null)
+        {
+            for (int y = 0; y < size; y++)
+            {
+                Debug.Log(y);
+                Sprite rightBorderSprite = gameManager.GetBorder(map[size - 1, y], rightMapChunk.map[0, y]);
+                if (rightBorderSprite != null)
+                {
+                    InstantiateBorder(size - 1, y, rightBorderSprite, new Vector2(0.5f, 0), 0);
+                }
+            }
+        }
+
+        MapChunk upMapChunk = gameManager.GetChunkAt((int)center.x, (int)center.y + 1);
+        MapChunk downMapChunk = gameManager.GetChunkAt((int)center.x, (int)center.y - 1);
     }
 
-    private void InstantiateBorder(int x, int y, Sprite rightBorderSprite, Vector2 offset, int zRotatation)
+    void InstantiateBorder(int x, int y, Sprite rightBorderSprite, Vector2 offset, int zRotatation)
     {
         GameObject border = Instantiate(borderPrefab, transform);
         border.GetComponent<SpriteRenderer>().sprite = rightBorderSprite;
