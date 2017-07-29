@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (currentChunk == null)
+            return;
+
         Vector3 centerOffset = Vector3.one * mapChunkPrefab.size / 2f;
         if (Vector3.SqrMagnitude(currentChunk.transform.position + centerOffset - player.position) > currentChunk.size * currentChunk.size / 2)
             UpdateMap();
@@ -45,18 +48,19 @@ public class GameManager : MonoBehaviour
 
     void GenerateChunk(int x, int y)
     {
-        mapChunkPrefab.center = new Vector2(x, y);
+        Vector2 center = new Vector2(x, y);
 
-        if (chunks.ContainsKey(mapChunkPrefab.center))
-            chunks[mapChunkPrefab.center].gameObject.SetActive(true);
+        if (chunks.ContainsKey(center))
+            chunks[center].gameObject.SetActive(true);
         else
         {
             MapChunk newChunk = Instantiate(mapChunkPrefab, transform);
-            newChunk.name = "Chunk " + mapChunkPrefab.center;
-            chunks.Add(mapChunkPrefab.center, newChunk);
+            newChunk.name = "Chunk " + center;
+            chunks.Add(center, newChunk);
+            newChunk.Generate(center);
         }
 
-        activeChunks.Add(chunks[mapChunkPrefab.center]);
+        activeChunks.Add(chunks[center]);
     }
 
     void GenerateChunksAroundPosition(Vector2 position)
@@ -111,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     Dictionary<TileType, Dictionary<TileType, Sprite>> borders;
 
-    public Sprite getBorder(TileType oneSide, TileType otherSide)
+    public Sprite GetBorder(TileType oneSide, TileType otherSide)
     {
         if (borders == null)
         {
@@ -127,10 +131,18 @@ public class GameManager : MonoBehaviour
 
         if (borders.ContainsKey(oneSide) && borders[oneSide].ContainsKey(otherSide))
             return borders[oneSide][otherSide];
-        //if (borders.ContainsKey(otherSide) && borders[otherSide].ContainsKey(oneSide))
-        //    return borders[otherSide][oneSide];
 
         return null;
+    }
+
+    public MapChunk GetChunkAt(int x, int y)
+    {
+        Vector2 position = new Vector2(x, y);
+
+        if (chunks.ContainsKey(position))
+            return chunks[position];
+        else
+            return null;
     }
 
     [System.Serializable]

@@ -5,11 +5,16 @@ using AICoreUnity;
 
 public class Enemy : MonoBehaviour {
 
-	[SerializeField]
-	private float hp;
+
+
 
 	[SerializeField]
 	private float baseDamage;
+
+	[SerializeField]
+	private float baseHealth;
+
+	public float hp { get; set; }
 
 	[SerializeField]
 	private float baseSpeed;
@@ -35,6 +40,7 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		hp = baseHealth;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		witch =  GameObject.FindGameObjectWithTag ("Witch");
 	}
@@ -44,6 +50,8 @@ public class Enemy : MonoBehaviour {
 
 
 		seekClosest ();
+
+		checkHealth();
 
 	}
 
@@ -67,5 +75,13 @@ public class Enemy : MonoBehaviour {
 			gameObject.GetComponent<MovementAI> ().target = witch.GetComponent<Rigidbody2D>();
 		}
 	}
-		
+
+
+
+	private void checkHealth(){
+		if(hp <= 0){
+			Destroy (gameObject);
+		}
+	}
+
 }

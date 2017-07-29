@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour {
 
-
-	public int healOverTimeCost { get; set; }
-
 	public Transform HealOverTimeObject;
-
+	public int healOverTimeCost;
 	public float healOverTimeTimeBetweenUpdates;
-
 	public float healOverTimeAmount;
 
 
-
-
-
-
-
-
-	public int FireballCost { get; set; }
+	public Transform fireballObject;
+	public int fireballCost;
+	public int fireballRadius;
+	public int fireballDamage;
 }
 
 

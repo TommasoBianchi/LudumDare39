@@ -1,17 +1,15 @@
 fileFormatVersion: 2
-guid: 85646e5b6b8cf42418bb94396da4ef31
-timeCreated: 1501355860
+guid: 273305b4a75e2bb4db3dcaa570709486
+timeCreated: 1501363372
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: idle_player_0
-    21300002: idle_player_1
-    21300004: idle_player_2
-    21300006: idle_player_3
-    21300008: idle_player_4
-    21300010: idle_player_5
-    21300012: idle_player_6
-    21300014: idle_player_7
+    21300000: move_down&up_0
+    21300002: move_down&up_1
+    21300004: move_down&up_2
+    21300006: move_down&up_3
+    21300008: move_down&up_4
+    21300010: move_down&up_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -78,106 +76,80 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle_player_0
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 748
-        width: 209
-        height: 366
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: idle_player_1
-      rect:
-        serializedVersion: 2
-        x: 418
-        y: 748
-        width: 210
-        height: 354
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: idle_player_2
-      rect:
-        serializedVersion: 2
-        x: 897
-        y: 747
-        width: 210
-        height: 366
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: idle_player_3
-      rect:
-        serializedVersion: 2
-        x: 1283
-        y: 747
-        width: 209
-        height: 353
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: idle_player_4
+      name: move_down&up_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 5
-        width: 372
+        y: 639
+        width: 207
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_down&up_1
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 639
+        width: 207
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_down&up_2
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 639
+        width: 206
+        height: 366
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_down&up_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1
+        width: 210
+        height: 369
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_down&up_4
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 0
+        width: 210
+        height: 369
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_down&up_5
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 1
+        width: 208
         height: 367
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: idle_player_5
-      rect:
-        serializedVersion: 2
-        x: 387
-        y: 5
-        width: 372
-        height: 358
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: idle_player_6
-      rect:
-        serializedVersion: 2
-        x: 907
-        y: 0
-        width: 259
-        height: 367
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: idle_player_7
-      rect:
-        serializedVersion: 2
-        x: 1295
-        y: 0
-        width: 258
-        height: 358
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
