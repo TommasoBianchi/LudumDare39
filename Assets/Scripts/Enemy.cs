@@ -49,17 +49,17 @@ public class Enemy : MonoBehaviour {
 
 
 	void seekClosest(){
+		
 		Vector3 playerOffset;
 		Vector3 witchOffset;
-		int playerDistance;
-		int witchDistance;
-
+		float playerDistance;
+		float witchDistance;
 
 		playerOffset = player.transform.position - gameObject.transform.position;
 		witchOffset = witch.transform.position - gameObject.transform.position;
 
-		playerDistance = (int) (Mathf.Abs(playerOffset.x) + Mathf.Abs(playerOffset.y));
-		witchDistance = (int)(Mathf.Abs(witchOffset.x) + Mathf.Abs(witchOffset.y));
+		playerDistance = Mathf.Abs(playerOffset.x) + Mathf.Abs(playerOffset.y);
+		witchDistance = Mathf.Abs(witchOffset.x) + Mathf.Abs(witchOffset.y);
 
 		if (playerDistance < witchDistance) {
 			gameObject.GetComponent<MovementAI> ().target = player.GetComponent<Rigidbody2D>();

@@ -24,6 +24,7 @@ public class Witch : MonoBehaviour {
 	private float baseDefence;
 
 	[SerializeField]
+
 	private float fogOfWarRadius;
 
 	[SerializeField]
@@ -59,6 +60,9 @@ public class Witch : MonoBehaviour {
 	}	
 
 	void barrier(){
+
+
+
 	}
 
 	void spaceFollow(){
