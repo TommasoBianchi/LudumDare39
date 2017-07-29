@@ -19,3 +19,6 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+# MAC ds_store
+*.ds_store
