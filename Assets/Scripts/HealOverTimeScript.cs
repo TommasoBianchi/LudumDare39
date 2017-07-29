@@ -13,11 +13,7 @@ public class HealOverTimeScript : MonoBehaviour {
 		timeBetweenUpdates = GameObject.FindGameObjectWithTag ("SkillManager").GetComponent<SkillManager> ().healOverTimeTimeBetweenUpdates;
 		healAmount = GameObject.FindGameObjectWithTag ("SkillManager").GetComponent<SkillManager> ().healOverTimeAmount;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
 	void OnTriggerStay2D(Collider2D collider){
 		if (collider.CompareTag ("Player")) {
@@ -29,7 +25,7 @@ public class HealOverTimeScript : MonoBehaviour {
 
 		}
 		if (collider.CompareTag ("Witch")) {
-
+			collider.gameObject.GetComponent<Witch> ().hp += healAmount;
 		}
 	}
 }

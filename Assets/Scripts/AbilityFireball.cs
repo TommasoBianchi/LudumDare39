@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AssemblyCSharp
 {
-	public class AbilityHealOverTime : Ability
+	public class AbilityFireball : Ability
 	{
 
 		SkillManager skillManager;
@@ -15,9 +15,9 @@ namespace AssemblyCSharp
 			skillManager = GameObject.FindGameObjectWithTag ("SkillManager").GetComponent<SkillManager> ();
 
 
-			if(witch.GetComponent<Witch> ().soulCheck (skillManager.healOverTimeCost)){
-				witch.GetComponent<Witch> ().souls -= skillManager.healOverTimeCost;
-				GameObject.Instantiate (skillManager.HealOverTimeObject);
+			if(witch.GetComponent<Witch> ().soulCheck (skillManager.fireballCost)){
+				witch.GetComponent<Witch> ().souls -= skillManager.fireballCost;
+				GameObject.Instantiate (skillManager.fireballObject);
 			}
 		}
 			

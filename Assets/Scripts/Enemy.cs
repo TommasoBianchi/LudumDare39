@@ -5,8 +5,8 @@ using AICoreUnity;
 
 public class Enemy : MonoBehaviour {
 
-	[SerializeField]
-	private float hp;
+
+	public float hp { get; set; }
 
 	[SerializeField]
 	private float baseDamage;
@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour {
 
 		seekClosest ();
 
+		checkHealth();
+
 	}
 
 
@@ -67,5 +69,13 @@ public class Enemy : MonoBehaviour {
 			gameObject.GetComponent<MovementAI> ().target = witch.GetComponent<Rigidbody2D>();
 		}
 	}
-		
+
+
+
+	private void checkHealth(){
+		if(hp <= 0){
+			Destroy (gameObject);
+		}
+	}
+
 }
