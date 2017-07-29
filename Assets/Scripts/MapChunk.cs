@@ -15,7 +15,7 @@ public class MapChunk : MonoBehaviour
         {
             return _center;
         }
-        set
+        private set
         {
             _center = value;
             transform.position = center * size - Vector2.one * size / 2f;
@@ -31,22 +31,17 @@ public class MapChunk : MonoBehaviour
 
     private GameManager.TileType[,] map;
 
-    void Start()
+    void Initialize()
     {
         gameManager = FindObjectOfType<GameManager>();
         random = new System.Random(gameManager.seed);
-        Generate();
     }
 
-    void Update()
+    public void Generate(Vector2 center)
     {
-
-    }
-
-    void Generate()
-    {
+        Initialize();
+        this.center = center;
         map = new GameManager.TileType[size, size];
-        Debug.Log(size);
 
         for (int x = 0; x < size; x++)
         {
@@ -103,35 +98,85 @@ public class MapChunk : MonoBehaviour
             }
         }
 
-        MapChunk leftMapChunk = gameManager.GetChunkAt((int)center.x - 1, (int)center.y);
-        if (leftMapChunk != null && leftMapChunk.map != null)
-        {
-            for (int y = 0; y < size; y++)
-            {
-                Sprite leftBorderSprite = gameManager.GetBorder(map[0, y], leftMapChunk.map[size - 1, y]);
-                if (leftBorderSprite != null)
-                {
-                    InstantiateBorder(0, y, leftBorderSprite, new Vector2(-0.5f, 0), 180);
-                }
-            }
-        }
-
         MapChunk rightMapChunk = gameManager.GetChunkAt((int)center.x + 1, (int)center.y);
         if (rightMapChunk != null && rightMapChunk.map != null)
         {
             for (int y = 0; y < size; y++)
             {
-                Debug.Log(y);
+                // Instantiate border to the right
                 Sprite rightBorderSprite = gameManager.GetBorder(map[size - 1, y], rightMapChunk.map[0, y]);
                 if (rightBorderSprite != null)
                 {
                     InstantiateBorder(size - 1, y, rightBorderSprite, new Vector2(0.5f, 0), 0);
                 }
+                // Instantiate border to the right - inverted
+                Sprite rightBorderSpriteInverted = gameManager.GetBorder(rightMapChunk.map[0, y], map[size - 1, y]);
+                if (rightBorderSpriteInverted != null)
+                {
+                    InstantiateBorder(size - 1, y, rightBorderSpriteInverted, new Vector2(0.5f, 0), 180);
+                }
+            }
+        }
+
+        MapChunk leftMapChunk = gameManager.GetChunkAt((int)center.x - 1, (int)center.y);
+        if (leftMapChunk != null && leftMapChunk.map != null)
+        {
+            for (int y = 0; y < size; y++)
+            {
+                // Instantiate border to the left
+                Sprite leftBorderSprite = gameManager.GetBorder(map[0, y], leftMapChunk.map[size - 1, y]);
+                if (leftBorderSprite != null)
+                {
+                    InstantiateBorder(0, y, leftBorderSprite, new Vector2(-0.5f, 0), 180);
+                }
+                // Instantiate border to the left - inverted
+                Sprite leftBorderSpriteInverted = gameManager.GetBorder(leftMapChunk.map[size - 1, y], map[0, y]);
+                if (leftBorderSpriteInverted != null)
+                {
+                    InstantiateBorder(0, y, leftBorderSpriteInverted, new Vector2(-0.5f, 0), 0);
+                }
             }
         }
 
         MapChunk upMapChunk = gameManager.GetChunkAt((int)center.x, (int)center.y + 1);
+        if (upMapChunk != null && upMapChunk.map != null)
+        {
+            for (int x = 0; x < size; x++)
+            {
+                // Instantiate border to the top
+                Sprite topBorderSprite = gameManager.GetBorder(map[x, size - 1], upMapChunk.map[x, 0]);
+                if (topBorderSprite != null)
+                {
+                    InstantiateBorder(x, size - 1, topBorderSprite, new Vector2(0, 0.5f), 90);
+                }
+                // Instantiate border to the top - inverted
+                Sprite topBorderSpriteInverted = gameManager.GetBorder(upMapChunk.map[x, 0], map[x, size - 1]);
+                if (topBorderSpriteInverted != null)
+                {
+                    InstantiateBorder(x, size - 1, topBorderSpriteInverted, new Vector2(0, 0.5f), -90);
+                }
+            }
+        }
+
         MapChunk downMapChunk = gameManager.GetChunkAt((int)center.x, (int)center.y - 1);
+        if (downMapChunk != null && downMapChunk.map != null)
+        {
+            for (int x = 0; x < size; x++)
+            {
+                // Instantiate border to the bottom
+                Sprite bottomBorderSprite = gameManager.GetBorder(map[x, 0], downMapChunk.map[x, size - 1]);
+                if (bottomBorderSprite != null)
+                {
+                    InstantiateBorder(x, 0, bottomBorderSprite, new Vector2(0, -0.5f), -90);
+                }
+                // Instantiate border to the bottom - inverted
+                Sprite bottomBorderSpriteInverted = gameManager.GetBorder(downMapChunk.map[x, size - 1], map[x, 0]);
+                if (bottomBorderSpriteInverted != null)
+                {
+                    InstantiateBorder(x, 0, bottomBorderSpriteInverted, new Vector2(0, -0.5f), 90);
+                }
+            }
+        }
     }
 
     void InstantiateBorder(int x, int y, Sprite rightBorderSprite, Vector2 offset, int zRotatation)
