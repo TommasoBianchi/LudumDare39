@@ -30,13 +30,21 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//CROSS PLAT INPUT
-		//WASD MOUSE 	
+		
+		wasdMovement();
+		damage ();
 	}
 		
+	void wasdMovement(){
 
-	void OnTriggerStay2D(Collider2D collider){
-		//BARRIER
-		//RUIN ABILITIES
+		var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+		transform.position += move * baseSpeed * Time.deltaTime;
+		
+	}
+
+	void damage(){
+		if (Input.GetMouseButton (0)) {
+			Debug.Log ("DAMAGE");
+		}
 	}
 }
