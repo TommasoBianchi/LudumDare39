@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AICoreUnity;
 
 public class Witch : MonoBehaviour {
 
 	private int initialSouls = 100;
-
-	[SerializeField]
-	private bool followPlayer = false;
 
 
 	public float hp {get; private set;}
@@ -26,6 +24,7 @@ public class Witch : MonoBehaviour {
 	private float baseDefence;
 
 	[SerializeField]
+
 	private float fogOfWarRadius;
 
 	[SerializeField]
@@ -50,21 +49,8 @@ public class Witch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		soulDrainRate ();
-		//startFollowPlayer ();
-		endFollowPlayer ();
-		/*if(follow){
-			startFollowPlayer ();
-		}
-		else{
-			endFollowPlayer();
-		}
-		*/
-	}
-
-
-
-
-	void endFollowPlayer(){
+		spaceFollow ();		
+		barrier ();
 
 	}
 
@@ -73,8 +59,17 @@ public class Witch : MonoBehaviour {
 		
 	}	
 
-	void OnTriggerStay2D(Collider2D collider){
-		//BARRIER
-		//RUIN ABILITIES
+	void barrier(){
+
+
+
+	}
+
+	void spaceFollow(){
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicSeek;
+		} else if (Input.GetKeyUp (KeyCode.Space)) {
+			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicNone;
+		}
 	}
 }
