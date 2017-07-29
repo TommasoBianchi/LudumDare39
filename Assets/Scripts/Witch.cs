@@ -9,17 +9,11 @@ public class Witch : MonoBehaviour {
 	private int initialSouls = 100;
 
 
-	public float hp {get; private set;}
-	public float maxHp {get; private set;}
-
-	[SerializeField]
-	private float baseDamage;
+	public float hp {get; set;}
+	public float maxHp {get; set;}
 
 	[SerializeField]
 	private float baseSpeed;
-
-	[SerializeField]
-	private float barrierRadius;
 
 	[SerializeField]
 	private float baseDefence;
@@ -40,6 +34,10 @@ public class Witch : MonoBehaviour {
 
 	private GameObject player;
 
+
+	private float accumulator = 0.0f;
+	private float waitTime= 1.0f;
+
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		souls = initialSouls;
@@ -58,6 +56,12 @@ public class Witch : MonoBehaviour {
 
 	void soulDrainRate(){
 		
+		accumulator += Time.deltaTime;
+		if(accumulator >= waitTime){
+			drainSouls ();
+			accumulator -= waitTime;
+		}
+
 	}	
 
 	void spaceFollow(){
@@ -88,5 +92,10 @@ public class Witch : MonoBehaviour {
 
 	public bool soulCheck(int soul){
 		return souls >= soul;
+	}
+
+	private void drainSouls(){
+	
+		souls -= shieldSoulDrain;
 	}
 }

@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (currentChunk == null)
+            return;
+
         Vector3 centerOffset = Vector3.one * mapChunkPrefab.size / 2f;
         if (Vector3.SqrMagnitude(currentChunk.transform.position + centerOffset - player.position) > currentChunk.size * currentChunk.size / 2)
             UpdateMap();
@@ -45,18 +48,19 @@ public class GameManager : MonoBehaviour
 
     void GenerateChunk(int x, int y)
     {
-        mapChunkPrefab.center = new Vector2(x, y);
+        Vector2 center = new Vector2(x, y);
 
-        if (chunks.ContainsKey(mapChunkPrefab.center))
-            chunks[mapChunkPrefab.center].gameObject.SetActive(true);
+        if (chunks.ContainsKey(center))
+            chunks[center].gameObject.SetActive(true);
         else
         {
             MapChunk newChunk = Instantiate(mapChunkPrefab, transform);
-            newChunk.name = "Chunk " + mapChunkPrefab.center;
-            chunks.Add(mapChunkPrefab.center, newChunk);
+            newChunk.name = "Chunk " + center;
+            chunks.Add(center, newChunk);
+            newChunk.Generate(center);
         }
 
-        activeChunks.Add(chunks[mapChunkPrefab.center]);
+        activeChunks.Add(chunks[center]);
     }
 
     void GenerateChunksAroundPosition(Vector2 position)
