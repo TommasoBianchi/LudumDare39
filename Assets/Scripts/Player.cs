@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-	public float startHp = 100f;
+
 	public float hp {get; set;}
-	public float maxHp;
+	public float maxHp {get; private set;}
     public Animator PlayerAnimator;
 
 	[SerializeField]
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start (){
-		hp = startHp;
+		
 	}
 	
 	// Update is called once per frame

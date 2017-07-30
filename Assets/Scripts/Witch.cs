@@ -6,9 +6,11 @@ using AICoreUnity;
 
 public class Witch : MonoBehaviour {
 
-	public float startHp;
+	private int initialSouls = 100;
+
+
 	public float hp {get; set;}
-	public float maxHp;
+	public float maxHp {get; set;}
 
 	[SerializeField]
 	private float baseSpeed;
@@ -26,9 +28,9 @@ public class Witch : MonoBehaviour {
 	[SerializeField]
 	private int shieldSoulDrain;
 
-	public int initialSouls;
-	public int souls { get; set; }
-	public int maxSoulNumber;
+	public int maxSoulNumber{get; private set;}
+
+	public int souls;
 
 	private GameObject player;
 
@@ -39,8 +41,6 @@ public class Witch : MonoBehaviour {
 	private float waitTime= 1.0f;
 
 	void Start () {
-		hp = startHp;
-
 		player = GameObject.FindGameObjectWithTag ("Player");
 		souls = initialSouls;
 	}
@@ -69,7 +69,6 @@ public class Witch : MonoBehaviour {
 	void spaceFollow(){
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicSeek;
-			gameObject.GetComponent<MovementAI> ().target = player.GetComponent<Rigidbody2D> ();
 		} else if (Input.GetKeyUp (KeyCode.Space)) {
 			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicNone;
 		}
