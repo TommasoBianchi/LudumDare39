@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Abilities;
 
-public class SanctuaryTile : MonoBehaviour {
+public class SanctuaryTile : MonoBehaviour
+{
 
     public GameObject skillPrefab;
     public GameObject player;
@@ -18,13 +19,13 @@ public class SanctuaryTile : MonoBehaviour {
 
     private bool isShowing;
 
-	void Start () 
+    void Start()
     {
         availableAbilities = SkillManager.GetRandomAbilities();
 
         player = GameObject.FindGameObjectWithTag("Player");
 
-        Vector2 localPos = -availableAbilities.Length / 2f * iconOffset;
+        Vector2 localPos = -(availableAbilities.Length - 1) / 2f * iconOffset;
         foreach (var ability in availableAbilities)
         {
             GameObject newSkill = Instantiate(skillPrefab, transform);
@@ -34,9 +35,9 @@ public class SanctuaryTile : MonoBehaviour {
             localPos += iconOffset;
             newSkill.SetActive(false);
         }
-	}
-	
-	void Update () 
+    }
+
+    void Update()
     {
         if (!isShowing && (player.transform.position - transform.position).sqrMagnitude < activationDistance * activationDistance)
         {
@@ -55,5 +56,5 @@ public class SanctuaryTile : MonoBehaviour {
                 icon.SetActive(false);
             }
         }
-	}
+    }
 }
