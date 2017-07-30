@@ -8,6 +8,8 @@ public class MapChunk : MonoBehaviour
     public GameObject tilePrefab;
     public GameObject borderPrefab;
 
+    public float tileScale;
+
     private Vector2 _center;
     public Vector2 center
     {
@@ -18,7 +20,7 @@ public class MapChunk : MonoBehaviour
         private set
         {
             _center = value;
-            transform.position = center * size - Vector2.one * size / 2f;
+            transform.position = (center * size - Vector2.one * size / 2f) * tileScale;
         }
     }
 
@@ -58,7 +60,7 @@ public class MapChunk : MonoBehaviour
 
                 Sprite sprite = gameManager.tilesData[i].sprite;
                 GameObject newTile = Instantiate(tilePrefab, transform);
-                newTile.transform.localPosition = new Vector2(x, y);
+                newTile.transform.localPosition = new Vector2(x, y) * tileScale;
                 newTile.GetComponent<SpriteRenderer>().sprite = sprite;
                 map[x, y] = gameManager.tilesData[i].type;
             }
