@@ -61,7 +61,7 @@ public class Witch : MonoBehaviour, IDamageable
         }
         set
         {
-            souls = value;
+            souls = Mathf.Min(value, maxSoulNumber);
             if (souls <= 0)
             {
                 souls = 0;

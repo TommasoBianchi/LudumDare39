@@ -40,6 +40,10 @@ public class SanctuaryTile : MonoBehaviour
 
             newSkill.SetActive(false);
         }
+
+        // Secret
+        char randChar = (char)('A' + Random.Range(0, 27));
+        GetComponentInChildren<TextMesh>().text = randChar.ToString();
     }
 
     void Update()
