@@ -4,7 +4,7 @@ using UnityEngine;
 using AssemblyCSharp;
 using AICoreUnity;
 
-public class Witch : MonoBehaviour {
+public class Witch : MonoBehaviour, IDamageable {
 
 	public Animator animator;
 
@@ -156,7 +156,12 @@ public class Witch : MonoBehaviour {
 	private void drainSouls(){
 		Souls -= shieldSoulDrain;
 	}
-		
+
+
+    public void Damage(float damage)
+    {
+        Hp -= damage;
+    }
 }
 
 
