@@ -41,14 +41,11 @@ namespace AdvancedSpawnerNamespace {
 		}
 
 		private void fillEnemyDistributions() {
-			EnemyDistribution ed = new EnemyDistribution (0, 0.15f, DistributionType.Uniform);
+			EnemyDistribution ed = new EnemyDistribution (0, 10f, DistributionType.Uniform);
 			float linearPos = 0f;
 			for (int i = 0; i < 100; i++) {
-				if (i % 2 == 0)
-					ed.AddEnemyWithPos(spawnerManager.getEnemyFromName("Enemy"), linearPos);
-				else
-					ed.AddEnemyWithPos(spawnerManager.getEnemyFromName("EnemyRed"), linearPos);
-				linearPos += 0.03f;
+				ed.AddEnemyWithPos(spawnerManager.getEnemyFromName("Enemy"), linearPos);
+				linearPos += 0.3f;
 				if (linearPos >= 1) {
 					linearPos -= 1;
 				}

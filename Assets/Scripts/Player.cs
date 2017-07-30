@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public float startHp;
 	public float hp;
 	public float maxHp;
 
@@ -33,7 +32,6 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 		wasdMovement();
 		damage ();
 	}
@@ -123,4 +121,11 @@ public class Player : MonoBehaviour {
 
         }
     }
+
+	void onTriggerEnter2D(Collider2D coll) {
+		if (coll.CompareTag ("Enemy")) {
+			Enemy e = coll.gameObject.GetComponent<Enemy> ();
+			e.
+		}
+	}
 }
