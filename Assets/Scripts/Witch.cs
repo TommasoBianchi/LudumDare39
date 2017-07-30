@@ -30,9 +30,11 @@ public class Witch : MonoBehaviour {
 
 	public int maxSoulNumber{get; private set;}
 
-	public int souls {get; set;}
+	public int souls;
 
 	private GameObject player;
+
+	private GameObject barrier;
 
 
 	private float accumulator = 0.0f;
@@ -41,7 +43,6 @@ public class Witch : MonoBehaviour {
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		souls = initialSouls;
-
 	}
 		
 
@@ -61,6 +62,7 @@ public class Witch : MonoBehaviour {
 			drainSouls ();
 			accumulator -= waitTime;
 		}
+
 
 	}	
 
@@ -98,4 +100,5 @@ public class Witch : MonoBehaviour {
 	
 		souls -= shieldSoulDrain;
 	}
+		
 }
