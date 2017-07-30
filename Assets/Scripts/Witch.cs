@@ -67,11 +67,56 @@ public class Witch : MonoBehaviour {
 	}	
 
 	void spaceFollow(){
+
+
+		Vector3 position = player.transform.position - gameObject.transform.position;
+
+
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicSeek;
 		} else if (Input.GetKeyUp (KeyCode.Space)) {
 			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicNone;
 		}
+
+		if ((position.x == 0) && position.y == 0)
+		{
+			animator.SetBool("Moving", false);
+			animator.SetInteger("MoveDir", 5);
+		}
+
+		else if (Mathf.Abs(position.y) >= Mathf.Abs(position.x) && position.y >= position.x)
+		{
+			animator.SetInteger("MoveDir", 0);
+			animator.SetBool("Moving", true);
+		}
+
+		else if (Mathf.Abs(position.x) >= Mathf.Abs(position.y) && position.x >= position.y)
+		{
+			animator.SetInteger("MoveDir", 1);
+			animator.SetBool("Moving", true);
+		}
+
+		else if (Mathf.Abs(position.x) >= Mathf.Abs(position.y) && position.y >= position.x)
+		{
+			animator.SetInteger("MoveDir", 3);
+			animator.SetBool("Moving", true);
+		}
+
+		else if (Mathf.Abs(position.y) >= Mathf.Abs(position.x) && position.x >= position.y)
+		{
+			animator.SetInteger("MoveDir", 2);
+			animator.SetBool("Moving", true);
+		}
+
+		else
+		{
+			animator.SetBool("Moving", false);
+			animator.SetInteger("MoveDir", 5);
+		}
+
+
+
+
 	}
 
 
@@ -102,3 +147,53 @@ public class Witch : MonoBehaviour {
 	}
 		
 }
+
+
+
+/* TODO
+ * 
+ * 
+ * ATTACK WITH ABI:ITIES
+ *  if (Input.GetMouseButton(0))
+        {
+            PlayerAnimator.SetInteger("MoveDir", -1);
+            isAttacking = true;
+
+            if ((dir.x == 0) && dir.y == 0)
+            {
+                PlayerAnimator.SetInteger("AttDir", 5);
+            }
+
+            else if (Mathf.Abs(dir.y) >= Mathf.Abs(dir.x) && dir.y >= dir.x)
+            {
+                PlayerAnimator.SetInteger("AttDir", 0);
+                PlayerAnimator.SetTrigger("kill");
+            }
+
+            else if (Mathf.Abs(dir.x) >= Mathf.Abs(dir.y) && dir.x >= dir.y)
+            {
+                PlayerAnimator.SetInteger("AttDir", 1);
+                PlayerAnimator.SetTrigger("kill");
+            }
+
+            else if (Mathf.Abs(dir.x) >= Mathf.Abs(dir.y) && dir.y >= dir.x)
+            {
+                PlayerAnimator.SetInteger("AttDir", 3);
+                PlayerAnimator.SetTrigger("kill");
+            }
+
+            else if (Mathf.Abs(dir.y) >= Mathf.Abs(dir.x) && dir.x >= dir.y)
+            {
+                PlayerAnimator.SetInteger("AttDir", 2);
+                PlayerAnimator.SetTrigger("kill");
+            }
+
+            else
+            {
+                PlayerAnimator.SetInteger("AttDir", 5);
+            }
+
+        }
+
+
+*/
