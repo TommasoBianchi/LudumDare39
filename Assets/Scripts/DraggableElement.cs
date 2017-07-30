@@ -5,7 +5,10 @@ using UnityEngine.Events;
 
 public class DraggableElement : MonoBehaviour {
 
-    public UnityEvent onDragEnd;
+    [System.Serializable]
+    public class DragEvent : UnityEvent<IDragDestination> { }
+
+    public DragEvent onDragEnd;
 
     private Vector3 startPos;
     private Vector3 offset;
@@ -30,7 +33,7 @@ public class DraggableElement : MonoBehaviour {
                 {
                     destination.Release(this);
                     GetComponent<Renderer>().enabled = false;
-                    onDragEnd.Invoke();
+                    onDragEnd.Invoke(destination);
                 }
                 else
                 {

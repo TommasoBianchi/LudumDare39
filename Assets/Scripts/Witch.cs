@@ -4,108 +4,124 @@ using UnityEngine;
 using Abilities;
 using AICoreUnity;
 
-public class Witch : MonoBehaviour, IDamageable {
+public class Witch : MonoBehaviour, IDamageable
+{
 
-	public Animator animator;
+    public Animator animator;
     private bool inside = true;
     private float firstTimeOut = 0f;
 
-	[SerializeField]
-	private float hp;
-	public float Hp { 
-		get {
-			return hp;
-		} set { 
-			hp = value;
-			if (hp > maxHp) {
-				hp = maxHp;
-			} else if (hp <= 0) {
-				hp = 0;
-				// TODO: gameover
-			}
-		}
-	}
-	public float maxHp;
+    [SerializeField]
+    private float hp;
+    public float Hp
+    {
+        get
+        {
+            return hp;
+        }
+        set
+        {
+            hp = value;
+            if (hp > maxHp)
+            {
+                hp = maxHp;
+            }
+            else if (hp <= 0)
+            {
+                hp = 0;
+                // TODO: gameover
+            }
+        }
+    }
+    public float maxHp;
 
-	[SerializeField]
-	private float baseSpeed;
+    [SerializeField]
+    private float baseSpeed;
 
-	[SerializeField]
-	private float baseDefence;
+    [SerializeField]
+    private float baseDefence;
 
-	[SerializeField]
+    [SerializeField]
 
-	private float fogOfWarRadius;
+    private float fogOfWarRadius;
 
-	[SerializeField]
-	private Dictionary<string, Ability> skillset = new Dictionary<string, Ability>();
+    [SerializeField]
+    private Dictionary<string, Ability> skillset = new Dictionary<string, Ability>();
 
-	[SerializeField]
-	private int shieldSoulDrain;
+    [SerializeField]
+    private int shieldSoulDrain;
 
-	[SerializeField]
-	private int souls;
-	public int Souls { get {
-			return souls;
-		} set {
-			souls = value;
-			if (souls <= 0) {
-				souls = 0;
-				barrier.SetActive (false);
+    [SerializeField]
+    private int souls;
+    public int Souls
+    {
+        get
+        {
+            return souls;
+        }
+        set
+        {
+            souls = Mathf.Min(value, maxSoulNumber);
+            if (souls <= 0)
+            {
+                souls = 0;
+                barrier.SetActive(false);
                 inside = false;
-			} else {
-				barrier.SetActive (true);
+            }
+            else
+            {
+                barrier.SetActive(true);
                 inside = true;
-			}
-		}
-	}
-	public int maxSoulNumber;
+            }
+        }
+    }
+    public int maxSoulNumber;
 
     public GameManager GM;
 
-	private GameObject player;
-	private GameObject barrier;
+    private GameObject player;
+    private GameObject barrier;
 
-	private float accumulator = 0.0f;
-	[SerializeField]
-	private float timeBetweenSoulDrain = 1.0f;
+    private float accumulator = 0.0f;
+    [SerializeField]
+    private float timeBetweenSoulDrain = 1.0f;
 
-	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
-		barrier = GameObject.FindGameObjectWithTag ("Barrier");
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        barrier = GameObject.FindGameObjectWithTag("Barrier");
+    }
 
 
-		// TEMP
-		skillset.Add("Q", new AbilityHealOverTime());
-		skillset.Add("E", new AbilityFireball());
-	}
-		
-
-	// Update is called once per frame
-	void Update () {
-		soulDrainRate ();
-		spaceFollow ();
-		abilities ();
+    // Update is called once per frame
+    void Update()
+    {
+        soulDrainRate();
+        spaceFollow();
+        abilities();
         outOfBarrierDamage();
 
-	}
+    }
 
 
-	void soulDrainRate(){
-		
-		accumulator += Time.deltaTime;
-		if(accumulator >= timeBetweenSoulDrain){
-			drainSouls ();
-			accumulator -= timeBetweenSoulDrain;
-		}
+    void soulDrainRate()
+    {
+
+        accumulator += Time.deltaTime;
+        if (accumulator >= timeBetweenSoulDrain)
+        {
+            drainSouls();
+            accumulator -= timeBetweenSoulDrain;
+        }
 
 
-	}	
+    }
 
-	void spaceFollow(){
+    void spaceFollow()
+    {
 
 
-		Vector3 position = player.transform.position - gameObject.transform.position;
+        Vector3 position = player.transform.position - gameObject.transform.position;
 
         if ((position.x == 0) && position.y == 0)
         {
@@ -139,46 +155,52 @@ public class Witch : MonoBehaviour, IDamageable {
             animator.SetInteger("MoveDir", 5);
         }
 
-        if (Input.GetKeyDown (KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-			gameObject.GetComponent<MovementAI> ().target = GameObject.FindWithTag ("Player").GetComponent<Rigidbody2D> ();
-			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicSeek;
+            gameObject.GetComponent<MovementAI>().target = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
+            gameObject.GetComponent<MovementAI>().aiAlgorithm = AIAlgorithm.KinematicSeek;
 
             animator.SetBool("Moving", true);
         }
 
-        else if (Input.GetKeyUp (KeyCode.Space))
+        else if (Input.GetKeyUp(KeyCode.Space))
         {
-			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicNone;
+            gameObject.GetComponent<MovementAI>().aiAlgorithm = AIAlgorithm.KinematicNone;
             animator.SetBool("Moving", false);
         }
-	}
+    }
 
 
-	void abilities ()
-	{
+    void abilities()
+    {
 
-		if (Input.GetKeyDown (KeyCode.E)) {
-			if (skillset.ContainsKey ("E") || skillset.ContainsKey ("e")) {
-				skillset ["E"].activate (gameObject);
-			}
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (skillset.ContainsKey("E") || skillset.ContainsKey("e"))
+            {
+                skillset["E"].activate(gameObject);
+            }
 
-		}
-		if (Input.GetKeyDown (KeyCode.Q)) {
-			if (skillset.ContainsKey ("Q") || skillset.ContainsKey ("q")) {
-				skillset ["Q"].activate (gameObject);
-			}
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (skillset.ContainsKey("Q") || skillset.ContainsKey("q"))
+            {
+                skillset["Q"].activate(gameObject);
+            }
 
-		}
-	}
+        }
+    }
 
-	public bool areSoulsEnough(int soul){
-		return soul <= Souls;
-	}
+    public bool areSoulsEnough(int soul)
+    {
+        return soul <= Souls;
+    }
 
-	private void drainSouls(){
-		Souls -= shieldSoulDrain;
-	}
+    private void drainSouls()
+    {
+        Souls -= shieldSoulDrain;
+    }
 
 
     public void Damage(float damage)
@@ -186,7 +208,7 @@ public class Witch : MonoBehaviour, IDamageable {
         Hp -= damage;
     }
 
-    void outOfBarrierDamage ()
+    void outOfBarrierDamage()
     {
         if (!inside && (Time.time >= (firstTimeOut + GM.timeOutBeforeDMG)))
         {
@@ -195,13 +217,18 @@ public class Witch : MonoBehaviour, IDamageable {
         }
     }
 
-	public void addAbility(string key, Ability a) {
-		skillset.Add (key.ToUpper (), a);
-	}
+    public void addAbility(string key, Ability a)
+    {
+        if (skillset.ContainsKey(key.ToUpper()))
+            skillset[key.ToUpper()] = a;
+        else
+            skillset.Add(key.ToUpper(), a);
+    }
 
-	public void removeAbility(string key) {
-		skillset.Remove (key);
-	}
+    public void removeAbility(string key)
+    {
+        skillset.Remove(key);
+    }
 }
 
 
