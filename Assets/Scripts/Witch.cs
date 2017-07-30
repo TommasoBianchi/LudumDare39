@@ -29,7 +29,7 @@ public class Witch : MonoBehaviour, IDamageable
             else if (hp <= 0)
             {
                 hp = 0;
-                // TODO: gameover
+				Instantiate (EndGameDeathWitch, transform.position, Quaternion.identity);
             }
         }
     }
@@ -81,6 +81,8 @@ public class Witch : MonoBehaviour, IDamageable
 
     private GameObject player;
     private GameObject barrier;
+
+	public Transform EndGameDeathWitch;
 
     private float accumulator = 0.0f;
     [SerializeField]
@@ -159,6 +161,7 @@ public class Witch : MonoBehaviour, IDamageable
         {
             gameObject.GetComponent<MovementAI>().target = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
             gameObject.GetComponent<MovementAI>().aiAlgorithm = AIAlgorithm.KinematicSeek;
+            gameObject.GetComponent<MovementAI>().maxSpeed = baseSpeed;
 
             animator.SetBool("Moving", true);
         }
@@ -213,7 +216,7 @@ public class Witch : MonoBehaviour, IDamageable
         if (!inside && (Time.time >= (firstTimeOut + GM.timeOutBeforeDMG)))
         {
             firstTimeOut = Time.time;
-            hp -= GM.damageOutside;
+            Hp -= GM.damageOutside;
         }
     }
 

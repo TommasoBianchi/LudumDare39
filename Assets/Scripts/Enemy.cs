@@ -48,12 +48,15 @@ public class Enemy : MonoBehaviour, IDamageable {
 
 	private Vector3 oldPos;
 
+    private ConeRaycaster coneRaycaster;
+
     // Use this for initialization
     void Start()
     {
         hp = baseHealth;
         player = GameObject.FindGameObjectWithTag("Player");
         witch = GameObject.FindGameObjectWithTag("Witch");
+        coneRaycaster = GetComponent<ConeRaycaster>();
     }
 
     // Update is called once per frame
@@ -84,8 +87,7 @@ public class Enemy : MonoBehaviour, IDamageable {
 
 			if (transform.position.Equals(oldPos))
             {
-                animator.SetBool("Moving", false);
-                animator.SetInteger("MoveDir", 5);
+                Attack(player.transform.position - transform.position);
             }
 
             else if (Mathf.Abs(playerOffset.y) >= Mathf.Abs(playerOffset.x) && playerOffset.y >= playerOffset.x)
@@ -124,8 +126,7 @@ public class Enemy : MonoBehaviour, IDamageable {
 
 			if (transform.position.Equals(oldPos))
             {
-                animator.SetBool("Moving", false);
-                animator.SetInteger("MoveDir", 5);
+                Attack(witch.transform.position - transform.position);
             }
 
             else if (Mathf.Abs(witchOffset.y) >= Mathf.Abs(witchOffset.x) && witchOffset.y >= witchOffset.x)
@@ -161,7 +162,17 @@ public class Enemy : MonoBehaviour, IDamageable {
 		oldPos = transform.position;
     }
 
-
+    void Attack(Vector2 dir)
+    {
+        animator.SetBool("Moving", false);
+        animator.SetInteger("MoveDir", 5);
+        GameObject target = coneRaycaster.Raycast(dir);
+        IDamageable damageableTarget = target.GetComponent<IDamageable>();
+        if (damageableTarget != null)
+        {
+            damageableTarget.Damage(baseDamage);
+        }
+    }
 
     private void checkHealth()
     {
