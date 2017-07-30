@@ -194,6 +194,14 @@ public class Witch : MonoBehaviour, IDamageable {
             hp -= GM.damageOutside;
         }
     }
+
+	public void addAbility(string key, Ability a) {
+		skillset.Add (key.ToUpper (), a);
+	}
+
+	public void removeAbility(string key) {
+		skillset.Remove (key);
+	}
 }
 
 
