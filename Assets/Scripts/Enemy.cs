@@ -46,6 +46,8 @@ public class Enemy : MonoBehaviour, IDamageable {
 
     public Animator animator;
 
+	private Vector3 oldPos;
+
     // Use this for initialization
     void Start()
     {
@@ -80,7 +82,7 @@ public class Enemy : MonoBehaviour, IDamageable {
         {
             gameObject.GetComponent<MovementAI>().target = player.GetComponent<Rigidbody2D>();
 
-            if ((playerOffset.x == 0) && playerOffset.y == 0)
+			if (transform.position.Equals(oldPos))
             {
                 animator.SetBool("Moving", false);
                 animator.SetInteger("MoveDir", 5);
@@ -120,7 +122,7 @@ public class Enemy : MonoBehaviour, IDamageable {
         {
             gameObject.GetComponent<MovementAI>().target = witch.GetComponent<Rigidbody2D>();
 
-            if ((witchOffset.x == 0) && witchOffset.y == 0)
+			if (transform.position.Equals(oldPos))
             {
                 animator.SetBool("Moving", false);
                 animator.SetInteger("MoveDir", 5);
@@ -156,6 +158,7 @@ public class Enemy : MonoBehaviour, IDamageable {
                 animator.SetInteger("MoveDir", 5);
             }
         }
+		oldPos = transform.position;
     }
 
 
