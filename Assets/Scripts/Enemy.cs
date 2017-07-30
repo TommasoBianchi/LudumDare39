@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using AICoreUnity;
 
-public class Enemy : MonoBehaviour, IDamageable {
+public class Enemy : MonoBehaviour, IDamageable
+{
 
     [SerializeField]
     private float baseDamage;
@@ -17,7 +18,7 @@ public class Enemy : MonoBehaviour, IDamageable {
     private float baseSpeed;
 
     [SerializeField]
-    private float attackFrequency;
+    private float attackDelay;
 
     [SerializeField]
     private float baseDefence;
@@ -26,27 +27,27 @@ public class Enemy : MonoBehaviour, IDamageable {
     private float fogOfWarRadius;
 
     [SerializeField]
-	private int minSouls;
-	[SerializeField]
-	private int maxSouls;
+    private int minSouls;
+    [SerializeField]
+    private int maxSouls;
 
-	private Color oldColor;
-	private float oldColorTimeChange;
-	private float oldColorTimeBetween = 0.3f;
-	private bool isRed = false;
+    private Color oldColor;
+    private float oldColorTimeChange;
+    private float oldColorTimeBetween = 0.3f;
+    private bool isRed = false;
 
     private string name;
 
     private GameObject player;
     private GameObject witch;
 
-	[SerializeField]
-	public SoulScript SoulObject;
-	public ParticleSystem DeathEffect; 
+    [SerializeField]
+    public SoulScript SoulObject;
+    public ParticleSystem DeathEffect;
 
     public Animator animator;
 
-	private Vector3 oldPos;
+    private Vector3 oldPos;
 
     private ConeRaycaster coneRaycaster;
 
@@ -63,7 +64,7 @@ public class Enemy : MonoBehaviour, IDamageable {
     void Update()
     {
         seekClosest();
-		checkDeactivateDamageRedEffect ();
+        checkDeactivateDamageRedEffect();
     }
 
 
@@ -81,11 +82,18 @@ public class Enemy : MonoBehaviour, IDamageable {
         playerDistance = Mathf.Abs(playerOffset.x) + Mathf.Abs(playerOffset.y);
         witchDistance = Mathf.Abs(witchOffset.x) + Mathf.Abs(witchOffset.y);
 
+        if (witch.GetComponent<Witch>().Souls > 0 && (witch.transform.position - player.transform.position).sqrMagnitude < 50)
+        {
+            // Barrier is on and player is into it, so chase the barrier by chasing the witch
+            witchDistance = -1;
+        }
+
         if (playerDistance < witchDistance)
         {
+            gameObject.GetComponent<MovementAI>().satisfactionRadius = 2;
             gameObject.GetComponent<MovementAI>().target = player.GetComponent<Rigidbody2D>();
 
-			if (transform.position.Equals(oldPos))
+            if (transform.position.Equals(oldPos))
             {
                 Attack(player.transform.position - transform.position);
             }
@@ -122,9 +130,14 @@ public class Enemy : MonoBehaviour, IDamageable {
         }
         else
         {
+            if (witch.GetComponent<Witch>().Souls > 0)
+                gameObject.GetComponent<MovementAI>().satisfactionRadius = 8 + transform.localScale.x;
+            else
+                gameObject.GetComponent<MovementAI>().satisfactionRadius = 2;
+
             gameObject.GetComponent<MovementAI>().target = witch.GetComponent<Rigidbody2D>();
 
-			if (transform.position.Equals(oldPos))
+            if (transform.position.Equals(oldPos))
             {
                 Attack(witch.transform.position - transform.position);
             }
@@ -159,18 +172,28 @@ public class Enemy : MonoBehaviour, IDamageable {
                 animator.SetInteger("MoveDir", 5);
             }
         }
-		oldPos = transform.position;
+        oldPos = transform.position;
     }
+
+    private float nextAttackTime;
 
     void Attack(Vector2 dir)
     {
+        if (Time.realtimeSinceStartup < nextAttackTime)
+            return;
+
+        nextAttackTime = Time.realtimeSinceStartup + attackDelay;
+
         animator.SetBool("Moving", false);
         animator.SetInteger("MoveDir", 5);
         GameObject target = coneRaycaster.Raycast(dir);
-        IDamageable damageableTarget = target.GetComponent<IDamageable>();
-        if (damageableTarget != null)
+        if (target != null)
         {
-            damageableTarget.Damage(baseDamage);
+            IDamageable damageableTarget = target.GetComponent<IDamageable>();
+            if (damageableTarget != null)
+            {
+                damageableTarget.Damage(baseDamage);
+            }
         }
     }
 
@@ -178,11 +201,12 @@ public class Enemy : MonoBehaviour, IDamageable {
     {
         if (hp <= 0)
         {
-			int numSouls = Random.Range (minSouls, maxSouls + 1);
-			for (int i = 0; i < numSouls; i++) {
-				Instantiate (DeathEffect, transform.position, Quaternion.identity);
-				Instantiate (SoulObject, transform.position + new Vector3 (Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0), Quaternion.identity);
-			}
+            int numSouls = Random.Range(minSouls, maxSouls + 1);
+            for (int i = 0; i < numSouls; i++)
+            {
+                Instantiate(DeathEffect, transform.position, Quaternion.identity);
+                Instantiate(SoulObject, transform.position + new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0), Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }
@@ -192,22 +216,25 @@ public class Enemy : MonoBehaviour, IDamageable {
     {
         hp -= damage;
         checkHealth();
-		activateDamageRedEffect ();
-		Vector3 dir = Input.mousePosition - transform.position;
-		GetComponent<Rigidbody2D> ().AddForce ((new Vector2 (dir.x, dir.y)) * 0.01f, ForceMode2D.Impulse);
+        activateDamageRedEffect();
+        Vector3 dir = Input.mousePosition - transform.position;
+        GetComponent<Rigidbody2D>().AddForce((new Vector2(dir.x, dir.y)) * 0.01f, ForceMode2D.Impulse);
     }
 
-	private void activateDamageRedEffect() {
-		oldColor = GetComponent<SpriteRenderer> ().color;
-		GetComponent<SpriteRenderer> ().color = Color.red;
-		oldColorTimeChange = Time.time;
-		isRed = true;
-	}
+    private void activateDamageRedEffect()
+    {
+        oldColor = GetComponent<SpriteRenderer>().color;
+        GetComponent<SpriteRenderer>().color = Color.red;
+        oldColorTimeChange = Time.time;
+        isRed = true;
+    }
 
-	private void checkDeactivateDamageRedEffect() {
-		if (isRed && Time.time > oldColorTimeChange + oldColorTimeBetween) {
-			GetComponent<SpriteRenderer> ().color = oldColor;
-			isRed = false;
-		}
-	}
+    private void checkDeactivateDamageRedEffect()
+    {
+        if (isRed && Time.time > oldColorTimeChange + oldColorTimeBetween)
+        {
+            GetComponent<SpriteRenderer>().color = oldColor;
+            isRed = false;
+        }
+    }
 }
