@@ -138,6 +138,7 @@ public class Player : MonoBehaviour
 
     void onEndAttack()
     {
+        Debug.Log("end att");
         isAttacking = false;
     }
 }
