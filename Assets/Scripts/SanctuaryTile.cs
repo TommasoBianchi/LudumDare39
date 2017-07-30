@@ -17,7 +17,8 @@ public class SanctuaryTile : MonoBehaviour
 
     private List<GameObject> skillIcons = new List<GameObject>();
 
-    private bool isShowing;
+    private bool isActivable = true;
+    private bool isShowing = false;
 
     void Start()
     {
@@ -33,13 +34,19 @@ public class SanctuaryTile : MonoBehaviour
             newSkill.transform.localPosition = localPos;
             skillIcons.Add(newSkill);
             localPos += iconOffset;
+
             newSkill.GetComponent<Skill>().ability = ability;
+            newSkill.GetComponent<Skill>().sanctuaryTile = this;
+
             newSkill.SetActive(false);
         }
     }
 
     void Update()
     {
+        if (!isActivable)
+            return;
+
         if (!isShowing && (player.transform.position - transform.position).sqrMagnitude < activationDistance * activationDistance)
         {
             isShowing = true;
@@ -56,6 +63,16 @@ public class SanctuaryTile : MonoBehaviour
             {
                 icon.SetActive(false);
             }
+        }
+    }
+
+    public void Inactivate()
+    {
+        isActivable = false;
+        isShowing = false;
+        foreach (var icon in skillIcons)
+        {
+            icon.SetActive(false);
         }
     }
 }

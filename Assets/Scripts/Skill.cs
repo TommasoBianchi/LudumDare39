@@ -6,7 +6,10 @@ using Abilities;
 
 public class Skill : MonoBehaviour {
 
+    [HideInInspector]
     public Ability ability;
+    [HideInInspector]
+    public SanctuaryTile sanctuaryTile;
 
     private Witch witch;
 
@@ -18,5 +21,7 @@ public class Skill : MonoBehaviour {
     public void AddAbility(IDragDestination destination)
     {
         string key = destination.GetGameObject().GetComponentInChildren<Text>().text;
+        witch.addAbility(key, ability);
+        sanctuaryTile.Inactivate();
     }
 }

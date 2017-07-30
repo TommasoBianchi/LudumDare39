@@ -3,27 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DragManager : MonoBehaviour {
+public class DragManager : MonoBehaviour
+{
 
     public LayerMask dragDestinationLayers;
     public LayerMask draggableLayers;
 
-	void Start () 
+    void Start()
     {
-		
-	}
-	
-	void Update () 
+
+    }
+
+    void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hitInfo;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, draggableLayers))
             {
+                if (hitInfo.transform.GetComponent<DraggableElement>() == null)
+                {
+                    Debug.LogError(hitInfo.transform.name);
+                    Debug.LogError(hitInfo.transform.gameObject.layer);
+                }
                 hitInfo.transform.GetComponent<DraggableElement>().StartDrag(hitInfo.point);
             }
         }
-	}
+    }
 
     public IDragDestination GetDragDestinationUnderMouse()
     {
@@ -44,9 +50,12 @@ public class DragManager : MonoBehaviour {
 
         if (res.Count > 0)
         {
-            IDragDestination destination = res[0].gameObject.GetComponent<IDragDestination>();
-            if (destination != null)
-                return destination;
+            foreach (var item in res)
+            {
+                IDragDestination destination = item.gameObject.GetComponent<IDragDestination>();
+                if (destination != null)
+                    return destination;
+            }
         }
 
         return null;
