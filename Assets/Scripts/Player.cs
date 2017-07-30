@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(ConeRaycaster))]
 public class Player : MonoBehaviour
 {
-
-    public float startHp;
-    public float hp;
-    public float maxHp;
+	[SerializeField]
+	private float hp;
+	public float Hp {get; set;}
+	public float maxHp;
 
     public Animator PlayerAnimator;
 

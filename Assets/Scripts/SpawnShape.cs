@@ -66,7 +66,7 @@ namespace AdvancedSpawnerNamespace {
 				break;
 			case ShapeType.Circle:
 				float p = linearPos * totalLength;
-				result = new Vector2 (Dim1 * Mathf.Sin (p / Dim1), Dim1 * Mathf.Cos (p / Dim1));
+				result = zeroPos +  new Vector2 (Dim1 * Mathf.Sin (p / Dim1), Dim1 * Mathf.Cos (p / Dim1));
 				break;
 			}
 

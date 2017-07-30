@@ -24,7 +24,7 @@ public class FogOfWar : MonoBehaviour
             fogOfWarMaterial.SetVector("_Player1_Pos", revealer1.position);
 
         if (revealer2 != null)
-            fogOfWarMaterial.SetVector("_Player1_Pos", revealer2.position);
+            fogOfWarMaterial.SetVector("_Player2_Pos", revealer2.position);
     }
 
     public void SetRadius(float radius)

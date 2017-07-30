@@ -16,7 +16,7 @@ namespace AssemblyCSharp
 
 
 			if(witch.GetComponent<Witch> ().soulCheck (skillManager.healOverTimeCost)){
-				witch.GetComponent<Witch> ().souls -= skillManager.healOverTimeCost;
+				witch.GetComponent<Witch> ().Souls -= skillManager.healOverTimeCost;
 				GameObject.Instantiate (skillManager.HealOverTimeObject);
 			}
 		}

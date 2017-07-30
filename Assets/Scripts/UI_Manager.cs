@@ -44,22 +44,22 @@ public class UI_Manager : MonoBehaviour {
     
     void UpdatePLifeBar ()
     {
-        pLifeBar.value = (player.hp * 100) / player.maxHp;
+        pLifeBar.value = (player.Hp * 100) / player.maxHp;
     }
 
     void UpdateWLifeBar ()
     {
-        wLifeBar.value = (witch.hp * 100) / witch.maxHp;
+        wLifeBar.value = (witch.Hp * 100) / witch.maxHp;
     }
      
     void UpdateSBar ()
     {
-        sBar.value = (witch.souls * 100) / witch.maxSoulNumber;
+        sBar.value = (witch.Souls * 100) / witch.maxSoulNumber;
     }
 
     void UpdateSAmount ()
     {
-        sAmount.text = witch.souls + "/" + witch.maxSoulNumber;
+        sAmount.text = witch.Souls + "/" + witch.maxSoulNumber;
     }
 
     public void Unpause ()

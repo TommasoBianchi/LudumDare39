@@ -19,13 +19,13 @@ public class HealOverTimeScript : MonoBehaviour {
 		if (collider.CompareTag ("Player")) {
 			if (Time.time >= timeLastUpdate + timeBetweenUpdates) {
 				timeLastUpdate = Time.time;
-				collider.gameObject.GetComponent<Player> ().hp += healAmount;
+				collider.gameObject.GetComponent<Player> ().Hp += healAmount;
 			}
 
 
 		}
 		if (collider.CompareTag ("Witch")) {
-			collider.gameObject.GetComponent<Witch> ().hp += healAmount;
+			collider.gameObject.GetComponent<Witch> ().Hp += healAmount;
 		}
 	}
 }
