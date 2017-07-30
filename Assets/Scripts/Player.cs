@@ -121,11 +121,4 @@ public class Player : MonoBehaviour {
 
         }
     }
-
-	void onTriggerEnter2D(Collider2D coll) {
-		if (coll.CompareTag ("Enemy")) {
-			Enemy e = coll.gameObject.GetComponent<Enemy> ();
-			e.
-		}
-	}
 }
