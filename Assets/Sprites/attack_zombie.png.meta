@@ -1,9 +1,27 @@
 fileFormatVersion: 2
 guid: 24b10f906ea7b4b8a8399abe156e68de
-timeCreated: 1501433045
+timeCreated: 1501435447
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: attack_zombie_0
+    21300002: attack_zombie_1
+    21300004: attack_zombie_2
+    21300006: attack_zombie_3
+    21300008: attack_zombie_4
+    21300010: attack_zombie_5
+    21300012: attack_zombie_6
+    21300014: attack_zombie_7
+    21300016: attack_zombie_8
+    21300018: attack_zombie_9
+    21300020: attack_zombie_10
+    21300022: attack_zombie_11
+    21300024: attack_zombie_12
+    21300026: attack_zombie_13
+    21300028: attack_zombie_14
+    21300030: attack_zombie_15
+    21300032: attack_zombie_16
+    21300034: attack_zombie_17
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +76,251 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: attack_zombie_0
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 514
+        width: 250
+        height: 382
+      alignment: 9
+      pivot: {x: 0.23621161, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 518
+        width: 146
+        height: 432
+      alignment: 9
+      pivot: {x: 0.4779661, y: 0.43670386}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_2
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 511
+        width: 206
+        height: 418
+      alignment: 9
+      pivot: {x: 0.3282219, y: 0.46921593}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_3
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 511
+        width: 267
+        height: 362
+      alignment: 9
+      pivot: {x: 0.2951763, y: 0.54443276}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_4
+      rect:
+        serializedVersion: 2
+        x: 1214
+        y: 507
+        width: 294
+        height: 362
+      alignment: 9
+      pivot: {x: 0.2647481, y: 0.5533193}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_5
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 490
+        width: 171
+        height: 446
+      alignment: 9
+      pivot: {x: 0.49059343, y: 0.4495101}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_6
+      rect:
+        serializedVersion: 2
+        x: 1982
+        y: 504
+        width: 173
+        height: 409
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4606732}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_7
+      rect:
+        serializedVersion: 2
+        x: 2307
+        y: 518
+        width: 187
+        height: 375
+      alignment: 9
+      pivot: {x: 0.5258032, y: 0.4613968}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_8
+      rect:
+        serializedVersion: 2
+        x: 2566
+        y: 518
+        width: 170
+        height: 375
+      alignment: 9
+      pivot: {x: 0.4905374, y: 0.4613968}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 29
+        width: 293
+        height: 362
+      alignment: 9
+      pivot: {x: 0.7580132, y: 0.4777837}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_10
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 15
+        width: 266
+        height: 362
+      alignment: 9
+      pivot: {x: 0.68745273, y: 0.5222163}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_11
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 15
+        width: 207
+        height: 419
+      alignment: 9
+      pivot: {x: 0.632096, y: 0.4577729}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_12
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 22
+        width: 146
+        height: 433
+      alignment: 9
+      pivot: {x: 0.46694905, y: 0.43313545}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_13
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 18
+        width: 250
+        height: 382
+      alignment: 9
+      pivot: {x: 0.757354, y: 0.48736817}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_14
+      rect:
+        serializedVersion: 2
+        x: 1596
+        y: 0
+        width: 171
+        height: 444
+      alignment: 9
+      pivot: {x: 0.50940585, y: 0.4058106}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_15
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 5
+        width: 172
+        height: 399
+      alignment: 9
+      pivot: {x: 0.49999928, y: 0.43550012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_16
+      rect:
+        serializedVersion: 2
+        x: 2157
+        y: 5
+        width: 187
+        height: 375
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45281836}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attack_zombie_17
+      rect:
+        serializedVersion: 2
+        x: 2470
+        y: 0
+        width: 172
+        height: 373
+      alignment: 9
+      pivot: {x: 0.49064744, y: 0.48275098}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
