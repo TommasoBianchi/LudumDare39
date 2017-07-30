@@ -6,4 +6,5 @@ public interface IDragDestination {
 
     bool CanRelease(DraggableElement element);
     void Release(DraggableElement element);
+    GameObject GetGameObject();
 }

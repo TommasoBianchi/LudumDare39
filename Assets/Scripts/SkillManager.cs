@@ -14,8 +14,8 @@ public class SkillManager : MonoBehaviour {
 
 	public Transform fireballObject;
 	public int fireballCost;
-	public int fireballRadius;
 	public int fireballDamage;
+	public float fireballSpeed;
 
     public AbilityIcons[] abilityIcons;
 

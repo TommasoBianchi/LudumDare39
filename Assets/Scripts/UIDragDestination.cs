@@ -27,4 +27,9 @@ public class UIDragDestination : MonoBehaviour, IDragDestination {
             image.sprite = spriteRenderer.sprite;
         }
     }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 }

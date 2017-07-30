@@ -16,7 +16,13 @@ public class Player : MonoBehaviour, IDamageable
 				hp = maxHp;
 			} else if (hp <= 0) {
 				hp = 0;
-				// TODO: gameover
+				Instantiate (DeathEffect, transform.position, Quaternion.identity);
+				Instantiate (EndGameDeathPlayer, transform.position, Quaternion.identity);
+				int numSouls = 50;
+				for (int i = 0; i < numSouls; i++) {
+					Instantiate (SoulObject, transform.position + new Vector3 (Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0), Quaternion.identity);
+				}
+				Destroy(gameObject);
 			}
 		}
 	}
@@ -45,11 +51,17 @@ public class Player : MonoBehaviour, IDamageable
     private float firstTimeOut;
 
     public GameManager GM;
+	public ParticleSystem DeathEffect;
+	public Transform EndGameDeathPlayer;
+	public SoulScript SoulObject;
+	public ParticleSystem Spawn;
 
     void Start()
     {
         coneRaycaster = GetComponent<ConeRaycaster>();
         inside = true;
+
+		Instantiate (Spawn, transform.position, Quaternion.identity);
     }
 
     void Update()
@@ -172,7 +184,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Damage(float damage)
     {
-        hp -= damage;
+        Hp -= damage;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -197,7 +209,7 @@ public class Player : MonoBehaviour, IDamageable
         if (!inside && (Time.time >= (firstTimeOut + GM.timeOutBeforeDMG)))
         {
             firstTimeOut = Time.time;
-            hp -= GM.damageOutside;
+            Hp -= GM.damageOutside;
         }
     }
 }

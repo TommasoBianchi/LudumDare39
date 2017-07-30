@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Abilities;
 
-public class SanctuaryTile : MonoBehaviour {
+public class SanctuaryTile : MonoBehaviour
+{
 
     public GameObject skillPrefab;
     public GameObject player;
@@ -16,15 +17,16 @@ public class SanctuaryTile : MonoBehaviour {
 
     private List<GameObject> skillIcons = new List<GameObject>();
 
-    private bool isShowing;
+    private bool isActivable = true;
+    private bool isShowing = false;
 
-	void Start () 
+    void Start()
     {
         availableAbilities = SkillManager.GetRandomAbilities();
 
         player = GameObject.FindGameObjectWithTag("Player");
 
-        Vector2 localPos = -availableAbilities.Length / 2f * iconOffset;
+        Vector2 localPos = -(availableAbilities.Length - 1) / 2f * iconOffset;
         foreach (var ability in availableAbilities)
         {
             GameObject newSkill = Instantiate(skillPrefab, transform);
@@ -32,12 +34,23 @@ public class SanctuaryTile : MonoBehaviour {
             newSkill.transform.localPosition = localPos;
             skillIcons.Add(newSkill);
             localPos += iconOffset;
+
+            newSkill.GetComponent<Skill>().ability = ability;
+            newSkill.GetComponent<Skill>().sanctuaryTile = this;
+
             newSkill.SetActive(false);
         }
-	}
-	
-	void Update () 
+
+        // Secret
+        char randChar = (char)('A' + Random.Range(0, 27));
+        GetComponentInChildren<TextMesh>().text = randChar.ToString();
+    }
+
+    void Update()
     {
+        if (!isActivable)
+            return;
+
         if (!isShowing && (player.transform.position - transform.position).sqrMagnitude < activationDistance * activationDistance)
         {
             isShowing = true;
@@ -55,5 +68,16 @@ public class SanctuaryTile : MonoBehaviour {
                 icon.SetActive(false);
             }
         }
-	}
+    }
+
+    public void Inactivate()
+    {
+        isActivable = false;
+        isShowing = false;
+        foreach (var icon in skillIcons)
+        {
+            icon.SetActive(false);
+        }
+        GetComponentInChildren<TextMesh>().color = Color.clear;
+    }
 }
