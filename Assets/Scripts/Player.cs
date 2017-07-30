@@ -29,10 +29,15 @@ public class Player : MonoBehaviour, IDamageable
 
     private ConeRaycaster coneRaycaster;
     private bool isAttacking = false;
+    private bool inside;
+    private float firstTimeOut;
+
+    public GameManager GM;
 
     void Start()
     {
         coneRaycaster = GetComponent<ConeRaycaster>();
+        inside = true;
     }
 
     void Update()
@@ -43,6 +48,7 @@ public class Player : MonoBehaviour, IDamageable
             wasdMovement();
             attack();
         }
+
     }
 
     void wasdMovement()
@@ -155,5 +161,31 @@ public class Player : MonoBehaviour, IDamageable
     public void Damage(float damage)
     {
         hp -= damage;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Barrier")
+        {
+            firstTimeOut = Time.time;
+            inside = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Barrier")
+        { 
+            inside = true;
+        }
+    }
+
+    void outOfBarrierDamage()
+    {
+        if (!inside && (Time.time >= (firstTimeOut + GM.timeOutBeforeDMG)))
+        {
+            firstTimeOut = Time.time;
+            hp -= GM.damageOutside;
+        }
     }
 }

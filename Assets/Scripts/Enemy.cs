@@ -35,6 +35,9 @@ public class Enemy : MonoBehaviour, IDamageable {
     private GameObject player;
     private GameObject witch;
 
+	[SerializeField]
+	public SoulScript SoulObject;
+
     // Use this for initialization
     void Start()
     {
@@ -80,6 +83,9 @@ public class Enemy : MonoBehaviour, IDamageable {
     {
         if (hp <= 0)
         {
+			for (int i = 0; i < souls; i++) {
+				Instantiate (SoulObject, transform.position + new Vector3 (Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0), Quaternion.identity);
+			}
             Destroy(gameObject);
         }
     }
