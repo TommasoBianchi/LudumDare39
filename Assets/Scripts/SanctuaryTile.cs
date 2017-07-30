@@ -33,6 +33,7 @@ public class SanctuaryTile : MonoBehaviour
             newSkill.transform.localPosition = localPos;
             skillIcons.Add(newSkill);
             localPos += iconOffset;
+            newSkill.GetComponent<Skill>().ability = ability;
             newSkill.SetActive(false);
         }
     }
