@@ -33,6 +33,11 @@ public class SkillManager : MonoBehaviour {
         return abilityIconsDictionary[type];
     }
 
+    public static Ability[] GetRandomAbilities()
+    {
+        return new Ability[]{ new AbilityFireball(), new AbilityHealOverTime() };
+    }
+
     [System.Serializable]
     public struct AbilityIcons
     {

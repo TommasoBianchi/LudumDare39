@@ -20,9 +20,9 @@ public class SanctuaryTile : MonoBehaviour {
 
 	void Start () 
     {
-        availableAbilities = new Ability[2];
-        availableAbilities[0] = new AbilityFireball();
-        availableAbilities[1] = new AbilityHealOverTime();
+        availableAbilities = SkillManager.GetRandomAbilities();
+
+        player = GameObject.FindGameObjectWithTag("Player");
 
         Vector2 localPos = -availableAbilities.Length / 2f * iconOffset;
         foreach (var ability in availableAbilities)

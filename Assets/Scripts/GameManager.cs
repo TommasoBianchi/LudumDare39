@@ -149,6 +149,11 @@ public class GameManager : MonoBehaviour
             return null;
     }
 
+    public TileData GetTileData(TileType type)
+    {
+        return tilesData.FirstOrDefault(td => td.type == type);
+    }
+
     [System.Serializable]
     public struct TileData
     {
@@ -185,6 +190,8 @@ public class GameManager : MonoBehaviour
     public enum TileType
     {
         Rock_1,
-        Rock_2
+        Rock_2,
+        Lava,
+        Sanctuary_Tile
     }
 }

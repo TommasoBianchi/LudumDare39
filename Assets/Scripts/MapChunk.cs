@@ -5,6 +5,7 @@ using UnityEngine;
 public class MapChunk : MonoBehaviour
 {
 
+    public GameObject sanctuaryTilePrefab;
     public GameObject tilePrefab;
     public GameObject borderPrefab;
 
@@ -45,10 +46,20 @@ public class MapChunk : MonoBehaviour
         this.center = center;
         map = new GameManager.TileType[size, size];
 
+        int sanctuaryX = -1;
+        int sanctuaryY = -1;
+        if ((int)center.x % 2 != 0 && (int)center.y % 2 != 0)
+        {
+            sanctuaryX = random.Next(0, size);
+            sanctuaryY = random.Next(0, size);
+        }
+
         for (int x = 0; x < size; x++)
         {
             for (int y = 0; y < size; y++)
             {
+                if (x == sanctuaryX && y == sanctuaryY) continue;
+
                 int randInt = random.Next(0, 100);
 
                 int i = 0;
@@ -64,6 +75,14 @@ public class MapChunk : MonoBehaviour
                 newTile.GetComponent<SpriteRenderer>().sprite = sprite;
                 map[x, y] = gameManager.tilesData[i].type;
             }
+        }
+
+        // Place the sanctuary
+        if ((int)center.x % 2 != 0 && (int)center.y % 2 != 0)
+        {
+            GameObject newTile = Instantiate(sanctuaryTilePrefab, transform);
+            newTile.transform.localPosition = new Vector2(sanctuaryX, sanctuaryY) * tileScale;
+            map[sanctuaryX, sanctuaryY] = GameManager.TileType.Sanctuary_Tile;
         }
 
         for (int x = 0; x < size; x++)
