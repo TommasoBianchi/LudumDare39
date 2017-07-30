@@ -17,6 +17,11 @@ public class Player : MonoBehaviour, IDamageable
 			} else if (hp <= 0) {
 				hp = 0;
 				Instantiate (DeathEffect, transform.position, Quaternion.identity);
+				Instantiate (EndGameDeathPlayer, transform.position, Quaternion.identity);
+				int numSouls = 50;
+				for (int i = 0; i < numSouls; i++) {
+					Instantiate (SoulObject, transform.position + new Vector3 (Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0), Quaternion.identity);
+				}
 				Destroy(gameObject);
 			}
 		}
@@ -47,11 +52,16 @@ public class Player : MonoBehaviour, IDamageable
 
     public GameManager GM;
 	public ParticleSystem DeathEffect;
+	public Transform EndGameDeathPlayer;
+	public SoulScript SoulObject;
+	public ParticleSystem Spawn;
 
     void Start()
     {
         coneRaycaster = GetComponent<ConeRaycaster>();
         inside = true;
+
+		Instantiate (Spawn, transform.position, Quaternion.identity);
     }
 
     void Update()
