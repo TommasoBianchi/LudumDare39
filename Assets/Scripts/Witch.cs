@@ -159,6 +159,7 @@ public class Witch : MonoBehaviour, IDamageable
         {
             gameObject.GetComponent<MovementAI>().target = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
             gameObject.GetComponent<MovementAI>().aiAlgorithm = AIAlgorithm.KinematicSeek;
+            gameObject.GetComponent<MovementAI>().maxSpeed = baseSpeed;
 
             animator.SetBool("Moving", true);
         }
