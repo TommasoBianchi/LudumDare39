@@ -7,12 +7,24 @@ using AICoreUnity;
 public class Witch : MonoBehaviour, IDamageable {
 
 	public Animator animator;
-    private bool inside;
-    private float firstTimeOut;
+    private bool inside = true;
+    private float firstTimeOut = 0f;
 
 	[SerializeField]
 	private float hp;
-	public float Hp { get; set;}
+	public float Hp { 
+		get {
+			return hp;
+		} set { 
+			hp = value;
+			if (hp > maxHp) {
+				hp = maxHp;
+			} else if (hp <= 0) {
+				hp = 0;
+				// TODO: gameover
+			}
+		}
+	}
 	public float maxHp;
 
 	[SerializeField]
@@ -41,7 +53,6 @@ public class Witch : MonoBehaviour, IDamageable {
 				souls = 0;
 				barrier.SetActive (false);
                 inside = false;
-                firstTimeOut = Time.time;
 			} else {
 				barrier.SetActive (true);
                 inside = true;
@@ -56,7 +67,8 @@ public class Witch : MonoBehaviour, IDamageable {
 	private GameObject barrier;
 
 	private float accumulator = 0.0f;
-	private float waitTime= 1.0f;
+	[SerializeField]
+	private float timeBetweenSoulDrain = 1.0f;
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -77,9 +89,9 @@ public class Witch : MonoBehaviour, IDamageable {
 	void soulDrainRate(){
 		
 		accumulator += Time.deltaTime;
-		if(accumulator >= waitTime){
+		if(accumulator >= timeBetweenSoulDrain){
 			drainSouls ();
-			accumulator -= waitTime;
+			accumulator -= timeBetweenSoulDrain;
 		}
 
 

@@ -26,8 +26,9 @@ public class Enemy : MonoBehaviour, IDamageable {
     private float fogOfWarRadius;
 
     [SerializeField]
-    private int souls;
-
+	private int minSouls;
+	[SerializeField]
+	private int maxSouls;
 
 
     private string name;
@@ -83,7 +84,8 @@ public class Enemy : MonoBehaviour, IDamageable {
     {
         if (hp <= 0)
         {
-			for (int i = 0; i < souls; i++) {
+			int numSouls = Random.Range (minSouls, maxSouls + 1);
+			for (int i = 0; i < numSouls; i++) {
 				Instantiate (SoulObject, transform.position + new Vector3 (Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0), Quaternion.identity);
 			}
             Destroy(gameObject);
@@ -94,7 +96,6 @@ public class Enemy : MonoBehaviour, IDamageable {
     public void Damage(float damage)
     {
         hp -= damage;
-        Debug.Log("Hp: " + hp);
         checkHealth();
     }
 }
