@@ -6,6 +6,8 @@ using AICoreUnity;
 
 public class Witch : MonoBehaviour {
 
+	public Animator animator;
+
 	[SerializeField]
 	private float hp;
 	public float Hp { get; set;}
