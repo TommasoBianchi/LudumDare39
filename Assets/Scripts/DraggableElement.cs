@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DraggableElement : MonoBehaviour {
+
+    public UnityEvent onDragEnd;
 
     private Vector3 startPos;
     private Vector3 offset;
@@ -26,7 +29,8 @@ public class DraggableElement : MonoBehaviour {
                 if (destination != null && destination.CanRelease(this))
                 {
                     destination.Release(this);
-                    Destroy(gameObject);
+                    GetComponent<Renderer>().enabled = false;
+                    onDragEnd.Invoke();
                 }
                 else
                 {
