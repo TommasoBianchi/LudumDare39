@@ -4,7 +4,7 @@ using UnityEngine;
 using AssemblyCSharp;
 using AICoreUnity;
 
-public class Witch : MonoBehaviour {
+public class Witch : MonoBehaviour, IDamageable {
 
 	public Animator animator;
 
@@ -82,53 +82,51 @@ public class Witch : MonoBehaviour {
 
 		Vector3 position = player.transform.position - gameObject.transform.position;
 
+        if ((position.x == 0) && position.y == 0)
+        {
+            animator.SetBool("Moving", false);
+            animator.SetInteger("MoveDir", 5);
+        }
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
+        else if (Mathf.Abs(position.y) >= Mathf.Abs(position.x) && position.y >= position.x)
+        {
+            animator.SetInteger("MoveDir", 0);
+        }
+
+        else if (Mathf.Abs(position.x) >= Mathf.Abs(position.y) && position.x >= position.y)
+        {
+            animator.SetInteger("MoveDir", 1);
+        }
+
+        else if (Mathf.Abs(position.x) >= Mathf.Abs(position.y) && position.y >= position.x)
+        {
+            animator.SetInteger("MoveDir", 3);
+        }
+
+        else if (Mathf.Abs(position.y) >= Mathf.Abs(position.x) && position.x >= position.y)
+        {
+            animator.SetInteger("MoveDir", 2);
+        }
+
+        else
+        {
+            animator.SetBool("Moving", false);
+            animator.SetInteger("MoveDir", 5);
+        }
+
+        if (Input.GetKeyDown (KeyCode.Space))
+        {
 			gameObject.GetComponent<MovementAI> ().target = GameObject.FindWithTag ("Player").GetComponent<Rigidbody2D> ();
 			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicSeek;
-		} else if (Input.GetKeyUp (KeyCode.Space)) {
+
+            animator.SetBool("Moving", true);
+        }
+
+        else if (Input.GetKeyUp (KeyCode.Space))
+        {
 			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicNone;
-		}
-
-		if ((position.x == 0) && position.y == 0)
-		{
-			animator.SetBool("Moving", false);
-			animator.SetInteger("MoveDir", 5);
-		}
-
-		else if (Mathf.Abs(position.y) >= Mathf.Abs(position.x) && position.y >= position.x)
-		{
-			animator.SetInteger("MoveDir", 0);
-			animator.SetBool("Moving", true);
-		}
-
-		else if (Mathf.Abs(position.x) >= Mathf.Abs(position.y) && position.x >= position.y)
-		{
-			animator.SetInteger("MoveDir", 1);
-			animator.SetBool("Moving", true);
-		}
-
-		else if (Mathf.Abs(position.x) >= Mathf.Abs(position.y) && position.y >= position.x)
-		{
-			animator.SetInteger("MoveDir", 3);
-			animator.SetBool("Moving", true);
-		}
-
-		else if (Mathf.Abs(position.y) >= Mathf.Abs(position.x) && position.x >= position.y)
-		{
-			animator.SetInteger("MoveDir", 2);
-			animator.SetBool("Moving", true);
-		}
-
-		else
-		{
-			animator.SetBool("Moving", false);
-			animator.SetInteger("MoveDir", 5);
-		}
-
-
-
-
+            animator.SetBool("Moving", false);
+        }
 	}
 
 
@@ -156,7 +154,12 @@ public class Witch : MonoBehaviour {
 	private void drainSouls(){
 		Souls -= shieldSoulDrain;
 	}
-		
+
+
+    public void Damage(float damage)
+    {
+        Hp -= damage;
+    }
 }
 
 

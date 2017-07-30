@@ -25,7 +25,6 @@ public class ConeRaycaster : MonoBehaviour
         for (int i = 0; i < numberOfLines; i++)
         {
             RaycastHit2D result = Physics2D.Raycast(transform.position, dir, range, castLayers);
-            Debug.DrawLine(transform.position, transform.position + new Vector3(dir.x, dir.y, 0) * range, Color.red);
             if (result != null && result.transform != null)
             {
                 return result.transform.gameObject;
@@ -34,5 +33,16 @@ public class ConeRaycaster : MonoBehaviour
         }
 
         return null;
+    }
+
+    void OnDrawGizmos()
+    {
+        Vector2 dir = Quaternion.Euler(0, 0, -angle / 2f) * Vector2.right;
+
+        for (int i = 0; i < numberOfLines; i++)
+        {
+            Gizmos.DrawLine(transform.position, transform.position + new Vector3(dir.x, dir.y, 0) * range);
+            dir = Quaternion.Euler(0, 0, angle / (numberOfLines - 1)) * dir;
+        } 
     }
 }

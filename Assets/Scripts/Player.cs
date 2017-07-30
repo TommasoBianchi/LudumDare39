@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ConeRaycaster))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
 	[SerializeField]
 	private float hp;
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         if (!isAttacking)
         {
             wasdMovement();
-            damage();
+            attack();
         }
     }
 
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
 
     }
 
-    void damage()
+    void attack()
     {
 
         Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -133,12 +133,27 @@ public class Player : MonoBehaviour
                 PlayerAnimator.SetInteger("AttDir", 5);
             }
 
+            // Deal damage
+            GameObject target = coneRaycaster.Raycast(dir);
+            if (target != null)
+            {
+                IDamageable damageableTarget = target.GetComponent<IDamageable>();
+                if (damageableTarget != null)
+                {
+                    damageableTarget.Damage(baseDamage);
+                    Debug.Log("Hitting " + target.name);
+                }
+            }
         }
     }
 
     void onEndAttack()
     {
-        Debug.Log("end att");
         isAttacking = false;
+    }
+
+    public void Damage(float damage)
+    {
+        hp -= damage;
     }
 }
