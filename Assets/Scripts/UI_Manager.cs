@@ -24,10 +24,10 @@ public class UI_Manager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        /*UpdatePLifeBar();
+        UpdatePLifeBar();
         UpdateWLifeBar();
         UpdateSBar();
-        UpdateSAmount();*/
+        UpdateSAmount();
         if (Input.GetKeyDown("escape") && !paused)
         {
             Time.timeScale = 0;
@@ -42,7 +42,7 @@ public class UI_Manager : MonoBehaviour {
         }
 	}
     
-   /* void UpdatePLifeBar ()
+    void UpdatePLifeBar ()
     {
         pLifeBar.value = (player.hp * 100) / player.maxHp;
     }
@@ -60,7 +60,7 @@ public class UI_Manager : MonoBehaviour {
     void UpdateSAmount ()
     {
         sAmount.text = witch.souls + "/" + witch.maxSoulNumber;
-    }*/
+    }
 
     public void Unpause ()
     {

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public float startHp;
 	public float hp;
 	public float maxHp;
 
@@ -33,7 +32,6 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 		wasdMovement();
 		damage ();
 	}

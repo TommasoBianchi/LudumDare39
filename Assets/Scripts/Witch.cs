@@ -6,9 +6,6 @@ using AICoreUnity;
 
 public class Witch : MonoBehaviour {
 
-	private int initialSouls = 100;
-
-	public float startHp;
 	public float hp;
 	public float maxHp;
 
@@ -28,7 +25,6 @@ public class Witch : MonoBehaviour {
 	[SerializeField]
 	private int shieldSoulDrain;
 
-	public int startSouls;
 	public int souls;
 	public int maxSoulNumber;
 
@@ -42,7 +38,6 @@ public class Witch : MonoBehaviour {
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
-		souls = initialSouls;
 	}
 		
 
