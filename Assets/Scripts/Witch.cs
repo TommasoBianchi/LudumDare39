@@ -7,7 +7,7 @@ using AICoreUnity;
 public class Witch : MonoBehaviour {
 
 	private int initialSouls = 100;
-
+	public Animator animator;
 
 	public float hp {get; set;}
 	public float maxHp {get; set;}
