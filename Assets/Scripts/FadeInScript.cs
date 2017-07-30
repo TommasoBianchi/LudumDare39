@@ -13,6 +13,7 @@ public class FadeInScript : MonoBehaviour {
 	void Start () {
 
 		audioClip = gameObject.GetComponent<AudioSource> ();
+		audioClip.volume = 0;
 		
 	}
 
