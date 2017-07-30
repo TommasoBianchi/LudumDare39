@@ -6,8 +6,13 @@ using AICoreUnity;
 
 public class Witch : MonoBehaviour {
 
-	public float hp;
-	public float maxHp;
+
+	private int initialSouls = 100;
+	public Animator animator;
+
+	public float hp {get; set;}
+	public float maxHp {get; set;}
+
 
 	[SerializeField]
 	private float baseSpeed;
