@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     public string randomSeed;
     public int seed { get; private set; }
+    public int damageOutside;
+    public float timeOutBeforeDMG;
+
 
     private Dictionary<Vector2, MapChunk> chunks = new Dictionary<Vector2, MapChunk>();
     private HashSet<MapChunk> activeChunks = new HashSet<MapChunk>();
@@ -35,7 +38,8 @@ public class GameManager : MonoBehaviour
             return;
 
         Vector3 centerOffset = Vector3.one * mapChunkPrefab.size / 2f;
-        if (Vector3.SqrMagnitude(currentChunk.transform.position + centerOffset - player.position) > currentChunk.size * currentChunk.size / 2)
+        if (Vector3.SqrMagnitude(currentChunk.transform.position + centerOffset - player.position) >
+            currentChunk.size * currentChunk.tileScale * currentChunk.size * currentChunk.tileScale / 2)
             UpdateMap();
     }
 
@@ -77,8 +81,8 @@ public class GameManager : MonoBehaviour
     void UpdateMap()
     {
         Vector2 newCurrentChunkPos = new Vector2(
-            Mathf.RoundToInt(player.position.x / mapChunkPrefab.size),
-            Mathf.RoundToInt(player.position.y / mapChunkPrefab.size)
+            Mathf.RoundToInt(player.position.x / mapChunkPrefab.size / mapChunkPrefab.tileScale),
+            Mathf.RoundToInt(player.position.y / mapChunkPrefab.size / mapChunkPrefab.tileScale)
         );
 
         currentChunk = chunks[newCurrentChunkPos];
@@ -87,7 +91,7 @@ public class GameManager : MonoBehaviour
         foreach (var chunk in activeChunks.ToArray())
         {
             Vector3 centerOffset = Vector3.one * mapChunkPrefab.size / 2f;
-            if (Vector3.SqrMagnitude(chunk.transform.position + centerOffset - player.position) > 4 * chunk.size * chunk.size)
+            if (Vector3.SqrMagnitude(chunk.transform.position + centerOffset - player.position) > 4 * chunk.size * chunk.size * chunk.tileScale * chunk.tileScale)
             {
                 chunk.gameObject.SetActive(false);
                 activeChunks.Remove(chunk);

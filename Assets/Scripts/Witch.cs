@@ -7,6 +7,8 @@ using AICoreUnity;
 public class Witch : MonoBehaviour, IDamageable {
 
 	public Animator animator;
+    private bool inside;
+    private float firstTimeOut;
 
 	[SerializeField]
 	private float hp;
@@ -38,12 +40,17 @@ public class Witch : MonoBehaviour, IDamageable {
 			if (souls <= 0) {
 				souls = 0;
 				barrier.SetActive (false);
+                inside = false;
+                firstTimeOut = Time.time;
 			} else {
 				barrier.SetActive (true);
+                inside = true;
 			}
 		}
 	}
 	public int maxSoulNumber;
+
+    public GameManager GM;
 
 	private GameObject player;
 	private GameObject barrier;
@@ -62,6 +69,7 @@ public class Witch : MonoBehaviour, IDamageable {
 		soulDrainRate ();
 		spaceFollow ();
 		abilities ();
+        outOfBarrierDamage();
 
 	}
 
@@ -159,6 +167,15 @@ public class Witch : MonoBehaviour, IDamageable {
     public void Damage(float damage)
     {
         Hp -= damage;
+    }
+
+    void outOfBarrierDamage ()
+    {
+        if (!inside && (Time.time >= (firstTimeOut + GM.timeOutBeforeDMG)))
+        {
+            firstTimeOut = Time.time;
+            hp -= GM.damageOutside;
+        }
     }
 }
 
