@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour, IDamageable {
 
 	[SerializeField]
 	public SoulScript SoulObject;
+	public ParticleSystem DeathEffect; 
 
     public Animator animator;
 
@@ -165,6 +166,7 @@ public class Enemy : MonoBehaviour, IDamageable {
         {
 			int numSouls = Random.Range (minSouls, maxSouls + 1);
 			for (int i = 0; i < numSouls; i++) {
+				Instantiate (DeathEffect, transform.position, Quaternion.identity);
 				Instantiate (SoulObject, transform.position + new Vector3 (Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0), Quaternion.identity);
 			}
             Destroy(gameObject);
