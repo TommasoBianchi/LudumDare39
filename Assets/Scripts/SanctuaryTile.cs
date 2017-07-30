@@ -78,5 +78,6 @@ public class SanctuaryTile : MonoBehaviour
         {
             icon.SetActive(false);
         }
+        GetComponentInChildren<TextMesh>().color = Color.clear;
     }
 }
