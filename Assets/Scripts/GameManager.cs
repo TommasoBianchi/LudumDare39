@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     public string randomSeed;
     public int seed { get; private set; }
+    public int damageOutside;
+    public float timeOutBeforeDMG;
+
 
     private Dictionary<Vector2, MapChunk> chunks = new Dictionary<Vector2, MapChunk>();
     private HashSet<MapChunk> activeChunks = new HashSet<MapChunk>();
