@@ -16,8 +16,7 @@ public class Player : MonoBehaviour, IDamageable
 				hp = maxHp;
 			} else if (hp <= 0) {
 				hp = 0;
-				// TODO: gameover
-
+				Instantiate (DeathEffect, transform.position, Quaternion.identity);
 				Destroy(gameObject);
 			}
 		}
@@ -47,6 +46,7 @@ public class Player : MonoBehaviour, IDamageable
     private float firstTimeOut;
 
     public GameManager GM;
+	public ParticleSystem DeathEffect;
 
     void Start()
     {
@@ -174,7 +174,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Damage(float damage)
     {
-        hp -= damage;
+        Hp -= damage;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -199,7 +199,7 @@ public class Player : MonoBehaviour, IDamageable
         if (!inside && (Time.time >= (firstTimeOut + GM.timeOutBeforeDMG)))
         {
             firstTimeOut = Time.time;
-            hp -= GM.damageOutside;
+            Hp -= GM.damageOutside;
         }
     }
 }
