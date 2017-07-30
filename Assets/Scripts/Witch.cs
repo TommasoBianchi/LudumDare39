@@ -8,9 +8,9 @@ public class Witch : MonoBehaviour {
 
 	private int initialSouls = 100;
 
-
-	public float hp {get; set;}
-	public float maxHp {get; set;}
+	public float startHp;
+	public float hp;
+	public float maxHp;
 
 	[SerializeField]
 	private float baseSpeed;
@@ -28,9 +28,9 @@ public class Witch : MonoBehaviour {
 	[SerializeField]
 	private int shieldSoulDrain;
 
-	public int maxSoulNumber{get; private set;}
-
+	public int startSouls;
 	public int souls;
+	public int maxSoulNumber;
 
 	private GameObject player;
 
