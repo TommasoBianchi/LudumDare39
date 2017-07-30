@@ -30,11 +30,8 @@ namespace AdvancedSpawnerNamespace {
 				}
 			}
 			foreach (EnemyWithPos ewp in enemyWithPosList) {
-				Debug.Log ("Spawn center: " + spawnCenter.x + " " + spawnCenter.y);
 				Vector2 enemyPosition = SpawnShape.GetPositionFromLinearPosition (spawnCenter, ewp.LinearPos);
-				Debug.Log ("enemy x: " + enemyPosition.x);
-				GameObject.Instantiate (ewp.Enemy, new Vector3(enemyPosition.x, enemyPosition.y, 0), Quaternion.identity);
-				Debug.Log ("Spawned enemy");
+				Instantiator.InstantiateEnemyWithRandomName (ewp.Enemy, new Vector3 (enemyPosition.x, enemyPosition.y, 0), Quaternion.identity);
 			}
 		}
 
