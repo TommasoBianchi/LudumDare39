@@ -1,7 +1,0 @@
-{
-	"items" : ["fabiovecchio",
-		"daniel",
-		"tommaso",
-		"giacomo",
-		"fabiogiovane"]
-}

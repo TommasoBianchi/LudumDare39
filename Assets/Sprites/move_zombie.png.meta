@@ -1,0 +1,272 @@
+fileFormatVersion: 2
+guid: 18d245e522d7a46838629f3d66c9d5b6
+timeCreated: 1501435241
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: move_zombie_0
+    21300002: move_zombie_1
+    21300004: move_zombie_2
+    21300006: move_zombie_3
+    21300008: move_zombie_4
+    21300010: move_zombie_5
+    21300012: move_zombie_6
+    21300014: move_zombie_7
+    21300016: move_zombie_8
+    21300018: move_zombie_9
+    21300020: move_zombie_10
+    21300022: move_zombie_11
+    21300024: move_zombie_12
+    21300026: move_zombie_13
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: move_zombie_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 601
+        width: 173
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_1
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 604
+        width: 169
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_2
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 600
+        width: 170
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_3
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 596
+        width: 249
+        height: 379
+      alignment: 9
+      pivot: {x: 0.23057635, y: 0.5031054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_4
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 599
+        width: 248
+        height: 376
+      alignment: 9
+      pivot: {x: 0.22949022, y: 0.50626034}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_5
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 599
+        width: 248
+        height: 376
+      alignment: 9
+      pivot: {x: 0.24372716, y: 0.50313014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_6
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 598
+        width: 248
+        height: 373
+      alignment: 9
+      pivot: {x: 0.2342357, y: 0.5063107}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_7
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 27
+        width: 175
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_8
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 28
+        width: 175
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_9
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 23
+        width: 172
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_10
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 4
+        width: 247
+        height: 395
+      alignment: 9
+      pivot: {x: 0.78403986, y: 0.49738804}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_11
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 4
+        width: 247
+        height: 394
+      alignment: 9
+      pivot: {x: 0.77986276, y: 0.49738142}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_12
+      rect:
+        serializedVersion: 2
+        x: 1417
+        y: 3
+        width: 247
+        height: 377
+      alignment: 9
+      pivot: {x: 0.7715086, y: 0.5027367}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_zombie_13
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 0
+        width: 248
+        height: 369
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

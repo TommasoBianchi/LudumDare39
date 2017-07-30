@@ -16,14 +16,21 @@ public static class Instantiator {
 	public static void InstantiateEnemyWithRandomName(Enemy e, Vector3 pos, Quaternion rot) {
 		Enemy eo = GameObject.Instantiate (e, pos, rot);
 
+		// Choose name
 		if (names.Count == 0) {
-			Item item = JsonUtility.FromJson<Item> (System.IO.File.ReadAllText ("Assets/Resources/names.txt"));
-			names = item.items;
+			int n = Random.Range (1, 5);
+			Item item = JsonUtility.FromJson<Item> (System.IO.File.ReadAllText ("Assets/Resources/names" + n + ".json"));
+			if (!names.Contains (item.items [0])) {
+				names.AddRange (item.items);
+			}
 		}
-		
 		int idx = Random.Range (0, names.Count);
 		string name = names [idx];
 		eo.GetComponentInChildren<TextMesh> ().text = name;
+
+		// Choose scale
+		float localScale = Random.Range(0.6f, 2.5f);
+		eo.transform.localScale = new Vector3(localScale, localScale, 1);
 	}
 
 	private class Item {

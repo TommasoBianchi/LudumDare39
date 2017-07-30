@@ -6,7 +6,6 @@ namespace AdvancedSpawnerNamespace {
 
 	[System.Serializable]
 	public class EnemyDistribution {
-		public float StartTime = 0;
 		public float TimeBetweenUpdates = 0.5f;
 		private float timeLastUpdate = 0;
 		public bool Ended = false;
@@ -15,7 +14,7 @@ namespace AdvancedSpawnerNamespace {
 		public DistributionType Distribution = DistributionType.Uniform;
 
 		public EnemyDistribution(float startTime, float timeBetweenUpdates, DistributionType distribution) {
-			StartTime = startTime;
+			timeLastUpdate = startTime;
 			TimeBetweenUpdates = timeBetweenUpdates;
 			Distribution = distribution;
 		}

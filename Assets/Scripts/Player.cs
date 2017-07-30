@@ -7,7 +7,19 @@ public class Player : MonoBehaviour, IDamageable
 {
 	[SerializeField]
 	private float hp;
-	public float Hp {get; set;}
+	public float Hp { 
+		get {
+			return hp;
+		} set { 
+			hp = value;
+			if (hp > maxHp) {
+				hp = maxHp;
+			} else if (hp <= 0) {
+				hp = 0;
+				// TODO: gameover
+			}
+		}
+	}
 	public float maxHp;
 
     public Animator PlayerAnimator;
@@ -42,6 +54,7 @@ public class Player : MonoBehaviour, IDamageable
 
     void Update()
     {
+		outOfBarrierDamage ();
 
         if (!isAttacking)
         {
@@ -147,7 +160,6 @@ public class Player : MonoBehaviour, IDamageable
                 if (damageableTarget != null)
                 {
                     damageableTarget.Damage(baseDamage);
-                    Debug.Log("Hitting " + target.name);
                 }
             }
         }
