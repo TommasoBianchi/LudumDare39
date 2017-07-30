@@ -1,10 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AssemblyCSharp
+namespace Abilities
 {
 	public class AbilityFireball : Ability
 	{
+
+        public override AbilityType type { get { return AbilityType.Fireball; } }
 
 		SkillManager skillManager;
 
