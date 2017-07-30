@@ -6,7 +6,9 @@ using AICoreUnity;
 
 public class Witch : MonoBehaviour {
 
-	public float hp;
+	[SerializeField]
+	private float hp;
+	public float Hp { get; set;}
 	public float maxHp;
 
 	[SerializeField]
@@ -25,19 +27,31 @@ public class Witch : MonoBehaviour {
 	[SerializeField]
 	private int shieldSoulDrain;
 
-	public int souls;
+	[SerializeField]
+	private int souls;
+	public int Souls { get {
+			return souls;
+		} set {
+			souls = value;
+			if (souls <= 0) {
+				souls = 0;
+				barrier.SetActive (false);
+			} else {
+				barrier.SetActive (true);
+			}
+		}
+	}
 	public int maxSoulNumber;
 
 	private GameObject player;
-
 	private GameObject barrier;
-
 
 	private float accumulator = 0.0f;
 	private float waitTime= 1.0f;
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
+		barrier = GameObject.FindGameObjectWithTag ("Barrier");
 	}
 		
 
@@ -63,6 +77,7 @@ public class Witch : MonoBehaviour {
 
 	void spaceFollow(){
 		if (Input.GetKeyDown (KeyCode.Space)) {
+			gameObject.GetComponent<MovementAI> ().target = GameObject.FindWithTag ("Player").GetComponent<Rigidbody2D> ();
 			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicSeek;
 		} else if (Input.GetKeyUp (KeyCode.Space)) {
 			gameObject.GetComponent<MovementAI> ().aiAlgorithm = AIAlgorithm.KinematicNone;
@@ -92,8 +107,7 @@ public class Witch : MonoBehaviour {
 	}
 
 	private void drainSouls(){
-	
-		souls -= shieldSoulDrain;
+		Souls -= shieldSoulDrain;
 	}
 		
 }

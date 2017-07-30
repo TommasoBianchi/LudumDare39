@@ -9,11 +9,9 @@ namespace AdvancedSpawnerNamespace {
 		public SpawnShape SpawnShape;
 		public List<EnemyDistribution> EnemyDistributions = new List<EnemyDistribution>();
 
-		private Vector2 spawnCenter;
 		private SpawnerManager spawnerManager;
 
 		void Start() {
-			spawnCenter = new Vector2 (transform.position.x, transform.position.y);
 			spawnerManager = GameObject.FindGameObjectWithTag ("SpawnerManager").GetComponent<SpawnerManager> ();
 			spawnerManager.FillDict ();
 
@@ -21,6 +19,8 @@ namespace AdvancedSpawnerNamespace {
 		}
 
 		void Update () {
+			Vector2 spawnCenter = new Vector2 (transform.position.x, transform.position.y);
+
 			List<EnemyWithPos> enemyWithPosList = new List<EnemyWithPos> ();
 			for (int i = 0; i < EnemyDistributions.Count; i++) {
 				EnemyDistribution ed = EnemyDistributions [i];
@@ -30,7 +30,9 @@ namespace AdvancedSpawnerNamespace {
 				}
 			}
 			foreach (EnemyWithPos ewp in enemyWithPosList) {
+				Debug.Log ("Spawn center: " + spawnCenter.x + " " + spawnCenter.y);
 				Vector2 enemyPosition = SpawnShape.GetPositionFromLinearPosition (spawnCenter, ewp.LinearPos);
+				Debug.Log ("enemy x: " + enemyPosition.x);
 				GameObject.Instantiate (ewp.Enemy, new Vector3(enemyPosition.x, enemyPosition.y, 0), Quaternion.identity);
 				Debug.Log ("Spawned enemy");
 			}
@@ -41,7 +43,7 @@ namespace AdvancedSpawnerNamespace {
 		}
 
 		private void fillEnemyDistributions() {
-			EnemyDistribution ed = new EnemyDistribution (0, 10f, DistributionType.Uniform);
+			EnemyDistribution ed = new EnemyDistribution (0, 4f, DistributionType.Uniform);
 			float linearPos = 0f;
 			for (int i = 0; i < 100; i++) {
 				ed.AddEnemyWithPos(spawnerManager.getEnemyFromName("Enemy"), linearPos);

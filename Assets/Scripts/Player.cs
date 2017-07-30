@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public float hp;
+	[SerializeField]
+	private float hp;
+	public float Hp {get; set;}
 	public float maxHp;
 
     public Animator PlayerAnimator;

@@ -16,7 +16,7 @@ namespace AssemblyCSharp
 
 
 			if(witch.GetComponent<Witch> ().soulCheck (skillManager.fireballCost)){
-				witch.GetComponent<Witch> ().souls -= skillManager.fireballCost;
+				witch.GetComponent<Witch> ().Souls -= skillManager.fireballCost;
 				GameObject.Instantiate (skillManager.fireballObject);
 			}
 		}
