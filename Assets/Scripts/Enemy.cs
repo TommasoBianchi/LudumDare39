@@ -43,6 +43,8 @@ public class Enemy : MonoBehaviour, IDamageable {
 	[SerializeField]
 	public SoulScript SoulObject;
 
+    public Animator animator;
+
     // Use this for initialization
     void Start()
     {
@@ -76,10 +78,82 @@ public class Enemy : MonoBehaviour, IDamageable {
         if (playerDistance < witchDistance)
         {
             gameObject.GetComponent<MovementAI>().target = player.GetComponent<Rigidbody2D>();
+
+            if ((playerOffset.x == 0) && playerOffset.y == 0)
+            {
+                animator.SetBool("Moving", false);
+                animator.SetInteger("MoveDir", 5);
+            }
+
+            else if (Mathf.Abs(playerOffset.y) >= Mathf.Abs(playerOffset.x) && playerOffset.y >= playerOffset.x)
+            {
+                animator.SetInteger("MoveDir", 0);
+                animator.SetBool("Moving", true);
+            }
+
+            else if (Mathf.Abs(playerOffset.x) >= Mathf.Abs(playerOffset.y) && playerOffset.x >= playerOffset.y)
+            {
+                animator.SetInteger("MoveDir", 1);
+                animator.SetBool("Moving", true);
+            }
+
+            else if (Mathf.Abs(playerOffset.x) >= Mathf.Abs(playerOffset.y) && playerOffset.y >= playerOffset.x)
+            {
+                animator.SetInteger("MoveDir", 3);
+                animator.SetBool("Moving", true);
+            }
+
+            else if (Mathf.Abs(playerOffset.y) >= Mathf.Abs(playerOffset.x) && playerOffset.x >= playerOffset.y)
+            {
+                animator.SetInteger("MoveDir", 2);
+                animator.SetBool("Moving", true);
+            }
+
+            else
+            {
+                animator.SetBool("Moving", false);
+                animator.SetInteger("MoveDir", 5);
+            }
         }
         else
         {
             gameObject.GetComponent<MovementAI>().target = witch.GetComponent<Rigidbody2D>();
+
+            if ((witchOffset.x == 0) && witchOffset.y == 0)
+            {
+                animator.SetBool("Moving", false);
+                animator.SetInteger("MoveDir", 5);
+            }
+
+            else if (Mathf.Abs(witchOffset.y) >= Mathf.Abs(witchOffset.x) && witchOffset.y >= witchOffset.x)
+            {
+                animator.SetInteger("MoveDir", 0);
+                animator.SetBool("Moving", true);
+            }
+
+            else if (Mathf.Abs(witchOffset.x) >= Mathf.Abs(witchOffset.y) && witchOffset.x >= witchOffset.y)
+            {
+                animator.SetInteger("MoveDir", 1);
+                animator.SetBool("Moving", true);
+            }
+
+            else if (Mathf.Abs(witchOffset.x) >= Mathf.Abs(witchOffset.y) && witchOffset.y >= witchOffset.x)
+            {
+                animator.SetInteger("MoveDir", 3);
+                animator.SetBool("Moving", true);
+            }
+
+            else if (Mathf.Abs(witchOffset.y) >= Mathf.Abs(witchOffset.x) && witchOffset.x >= witchOffset.y)
+            {
+                animator.SetInteger("MoveDir", 2);
+                animator.SetBool("Moving", true);
+            }
+
+            else
+            {
+                animator.SetBool("Moving", false);
+                animator.SetInteger("MoveDir", 5);
+            }
         }
     }
 
