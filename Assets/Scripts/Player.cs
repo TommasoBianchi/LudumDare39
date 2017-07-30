@@ -17,6 +17,8 @@ public class Player : MonoBehaviour, IDamageable
 			} else if (hp <= 0) {
 				hp = 0;
 				// TODO: gameover
+
+				Destroy(gameObject);
 			}
 		}
 	}
