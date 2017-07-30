@@ -8,12 +8,23 @@ public class HealOverTimeScript : MonoBehaviour {
 	private float timeBetweenUpdates;
 	private float healAmount;
 
+	private float timeOfCreation;
+	private float timeToLive;
+
 	// Use this for initialization
 	void Start () {
-		timeBetweenUpdates = GameObject.FindGameObjectWithTag ("SkillManager").GetComponent<SkillManager> ().healOverTimeTimeBetweenUpdates;
-		healAmount = GameObject.FindGameObjectWithTag ("SkillManager").GetComponent<SkillManager> ().healOverTimeAmount;
+		SkillManager sm = GameObject.FindGameObjectWithTag ("SkillManager").GetComponent<SkillManager> ();
+		timeBetweenUpdates = sm.healOverTimeTimeBetweenUpdates;
+		healAmount = sm.healOverTimeAmount;
+		timeOfCreation = Time.time;
+		timeToLive = sm.healOverTimeDuration;
 	}
 
+	void Update() {
+		if (Time.time > timeOfCreation + timeToLive) {
+			Destroy (gameObject);
+		}
+	}
 
 	void OnTriggerStay2D(Collider2D collider){
 		if (collider.CompareTag ("Player")) {

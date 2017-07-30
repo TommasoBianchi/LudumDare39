@@ -38,7 +38,7 @@ public class Witch : MonoBehaviour, IDamageable {
 	private float fogOfWarRadius;
 
 	[SerializeField]
-	private Dictionary<string, Ability> skillset;
+	private Dictionary<string, Ability> skillset = new Dictionary<string, Ability>();
 
 	[SerializeField]
 	private int shieldSoulDrain;
@@ -73,6 +73,10 @@ public class Witch : MonoBehaviour, IDamageable {
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		barrier = GameObject.FindGameObjectWithTag ("Barrier");
+
+
+		// TEMP
+		skillset.Add("Q", new AbilityHealOverTime());
 	}
 		
 
@@ -154,21 +158,21 @@ public class Witch : MonoBehaviour, IDamageable {
 	{
 
 		if (Input.GetKeyDown (KeyCode.E)) {
-			if (skillset.ContainsKey ("E")) {
+			if (skillset.ContainsKey ("E") || skillset.ContainsKey ("e")) {
 				skillset ["E"].activate (gameObject);
 			}
 
 		}
 		if (Input.GetKeyDown (KeyCode.Q)) {
-			if (skillset.ContainsKey ("Q")) {
+			if (skillset.ContainsKey ("Q") || skillset.ContainsKey ("q")) {
 				skillset ["Q"].activate (gameObject);
 			}
 
 		}
 	}
 
-	public bool soulCheck(int soul){
-		return souls >= soul;
+	public bool areSoulsEnough(int soul){
+		return soul <= Souls;
 	}
 
 	private void drainSouls(){

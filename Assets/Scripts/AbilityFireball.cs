@@ -17,7 +17,7 @@ namespace Abilities
 			skillManager = GameObject.FindGameObjectWithTag ("SkillManager").GetComponent<SkillManager> ();
 
 
-			if(witch.GetComponent<Witch> ().soulCheck (skillManager.fireballCost)){
+			if(witch.GetComponent<Witch> ().areSoulsEnough (skillManager.fireballCost)){
 				witch.GetComponent<Witch> ().Souls -= skillManager.fireballCost;
 				GameObject.Instantiate (skillManager.fireballObject);
 			}

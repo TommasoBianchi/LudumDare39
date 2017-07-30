@@ -9,6 +9,7 @@ public class SkillManager : MonoBehaviour {
 	public int healOverTimeCost;
 	public float healOverTimeTimeBetweenUpdates;
 	public float healOverTimeAmount;
+	public float healOverTimeDuration;
 
 
 	public Transform fireballObject;

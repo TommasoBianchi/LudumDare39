@@ -12,12 +12,9 @@ namespace Abilities
 
 
 		public override void activate(GameObject witch){
-
-
 			skillManager = GameObject.FindGameObjectWithTag ("SkillManager").GetComponent<SkillManager> ();
 
-
-			if(witch.GetComponent<Witch> ().soulCheck (skillManager.healOverTimeCost)){
+			if(witch.GetComponent<Witch> ().areSoulsEnough (skillManager.healOverTimeCost)){
 				witch.GetComponent<Witch> ().Souls -= skillManager.healOverTimeCost;
 				GameObject.Instantiate (skillManager.HealOverTimeObject);
 			}
