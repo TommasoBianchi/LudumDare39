@@ -9,11 +9,11 @@ namespace AdvancedSpawnerNamespace {
 		public SpawnShape SpawnShape;
 		public List<EnemyDistribution> EnemyDistributions = new List<EnemyDistribution>();
 
-		private SpawnerManager spawnerManager;
+		private EnemyManager enemyManager;
 
 		void Start() {
-			spawnerManager = GameObject.FindGameObjectWithTag ("SpawnerManager").GetComponent<SpawnerManager> ();
-			spawnerManager.FillDict ();
+			enemyManager = GameObject.FindGameObjectWithTag ("SpawnerManager").GetComponent<EnemyManager> ();
+			enemyManager.FillDict ();
 
 			fillEnemyDistributions ();
 		}
@@ -46,7 +46,7 @@ namespace AdvancedSpawnerNamespace {
 			EnemyDistribution ed = new EnemyDistribution (0, 4f, DistributionType.Uniform);
 			float linearPos = 0f;
 			for (int i = 0; i < 100; i++) {
-				ed.AddEnemyWithPos(spawnerManager.getEnemyFromName("Enemy"), linearPos);
+				ed.AddEnemyWithPos(enemyManager.getEnemyFromName("Enemy"), linearPos);
 				linearPos += 0.3f;
 				if (linearPos >= 1) {
 					linearPos -= 1;

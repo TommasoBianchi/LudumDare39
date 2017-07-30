@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerManager : MonoBehaviour {
+public class EnemyManager : MonoBehaviour {
 	
 	private Dictionary<string, Enemy> EnemiesDictionary = new Dictionary<string, Enemy>();
 	public List<Enemy> Enemies;
