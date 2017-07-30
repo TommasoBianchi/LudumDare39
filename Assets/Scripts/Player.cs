@@ -2,44 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+[RequireComponent(typeof(ConeRaycaster))]
+public class Player : MonoBehaviour
+{
 
-	public float hp {get; set;}
-	public float maxHp {get; private set;}
+    public float startHp;
+    public float hp;
+    public float maxHp;
+
     public Animator PlayerAnimator;
 
-	[SerializeField]
-	private float baseDamage;
+    [SerializeField]
+    private float baseDamage;
 
-	[SerializeField]
-	private float baseSpeed;
+    [SerializeField]
+    private float baseSpeed;
 
-	[SerializeField]
-	private float attackFrequency;
+    [SerializeField]
+    private float attackFrequency;
 
-	[SerializeField]
-	private float baseDefence;
+    [SerializeField]
+    private float baseDefence;
 
-	[SerializeField]
-	private float fogOfWarRadius;
+    [SerializeField]
+    private float fogOfWarRadius;
 
+    private ConeRaycaster coneRaycaster;
+    private bool isAttacking = false;
 
-	// Use this for initialization
-	void Start (){
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-		wasdMovement();
-		damage ();
-	}
-		
-	void wasdMovement(){
+    void Start()
+    {
+        coneRaycaster = GetComponent<ConeRaycaster>();
+    }
 
-		var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0).normalized;
-		transform.position += move * baseSpeed * Time.deltaTime;
+    void Update()
+    {
+
+        if (!isAttacking)
+        {
+            wasdMovement();
+            damage();
+        }
+    }
+
+    void wasdMovement()
+    {
+
+        var move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0).normalized;
+        transform.position += move * baseSpeed * Time.deltaTime;
 
         if ((move.x == 0) && move.y == 0)
         {
@@ -47,7 +57,7 @@ public class Player : MonoBehaviour {
             PlayerAnimator.SetInteger("MoveDir", 5);
         }
 
-        else if(Mathf.Abs(move.y) >= Mathf.Abs(move.x) && move.y >= move.x)
+        else if (Mathf.Abs(move.y) >= Mathf.Abs(move.x) && move.y >= move.x)
         {
             PlayerAnimator.SetInteger("MoveDir", 0);
             PlayerAnimator.SetBool("Moving", true);
@@ -71,19 +81,23 @@ public class Player : MonoBehaviour {
             PlayerAnimator.SetBool("Moving", true);
         }
 
-        else {
+        else
+        {
             PlayerAnimator.SetBool("Moving", false);
             PlayerAnimator.SetInteger("MoveDir", 5);
         }
 
     }
 
-	void damage(){
+    void damage()
+    {
 
         Vector3 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
-		if (Input.GetMouseButton (0)) {
-			Debug.Log ("DAMAGE");
+        if (Input.GetMouseButton(0))
+        {
+            PlayerAnimator.SetInteger("MoveDir", -1);
+            isAttacking = true;
 
             if ((dir.x == 0) && dir.y == 0)
             {
@@ -120,5 +134,10 @@ public class Player : MonoBehaviour {
             }
 
         }
+    }
+
+    void onEndAttack()
+    {
+        isAttacking = false;
     }
 }

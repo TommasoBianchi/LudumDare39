@@ -6,11 +6,13 @@ using AICoreUnity;
 
 public class Witch : MonoBehaviour {
 
+
 	private int initialSouls = 100;
 	public Animator animator;
 
 	public float hp {get; set;}
 	public float maxHp {get; set;}
+
 
 	[SerializeField]
 	private float baseSpeed;
@@ -28,9 +30,8 @@ public class Witch : MonoBehaviour {
 	[SerializeField]
 	private int shieldSoulDrain;
 
-	public int maxSoulNumber{get; private set;}
-
 	public int souls;
+	public int maxSoulNumber;
 
 	private GameObject player;
 
@@ -42,7 +43,6 @@ public class Witch : MonoBehaviour {
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
-		souls = initialSouls;
 	}
 		
 

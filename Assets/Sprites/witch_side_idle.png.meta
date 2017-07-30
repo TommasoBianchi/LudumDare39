@@ -1,17 +1,13 @@
 fileFormatVersion: 2
-guid: 8456f7cda91a1a64eb66549afc746f68
-timeCreated: 1501412699
+guid: 1f27f8aa9f2ff4885a3f4c44b5e73564
+timeCreated: 1501413098
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: move_sx&dx_0
-    21300002: move_sx&dx_1
-    21300004: move_sx&dx_2
-    21300006: move_sx&dx_3
-    21300008: move_sx&dx_4
-    21300010: move_sx&dx_5
-    21300012: move_sx&dx_6
-    21300014: move_sx&dx_7
+    21300000: witch_side_idle_0
+    21300002: witch_side_idle_2
+    21300004: witch_side_idle_4
+    21300006: witch_side_idle_5
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -78,106 +74,54 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: move_sx&dx_0
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 483
-        width: 249
-        height: 363
-      alignment: 9
-      pivot: {x: 0.37514755, y: 0.5026763}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: move_sx&dx_1
-      rect:
-        serializedVersion: 2
-        x: 508
-        y: 483
-        width: 264
-        height: 346
-      alignment: 9
-      pivot: {x: 0.41904104, y: 0.49438423}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: move_sx&dx_2
-      rect:
-        serializedVersion: 2
-        x: 807
-        y: 488
-        width: 249
-        height: 361
-      alignment: 9
-      pivot: {x: 0.38685283, y: 0.4838529}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: move_sx&dx_3
-      rect:
-        serializedVersion: 2
-        x: 1090
-        y: 488
-        width: 264
-        height: 343
-      alignment: 9
-      pivot: {x: 0.43008098, y: 0.50283235}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: move_sx&dx_4
+      name: witch_side_idle_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 348
-        height: 344
-      alignment: 9
-      pivot: {x: 0.73450166, y: 0.55083454}
+        y: 659
+        width: 400
+        height: 596
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: move_sx&dx_5
+      name: witch_side_idle_2
       rect:
         serializedVersion: 2
-        x: 403
-        y: 0
-        width: 347
-        height: 367
-      alignment: 9
-      pivot: {x: 0.7379773, y: 0.5158828}
+        x: 533
+        y: 659
+        width: 395
+        height: 588
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: move_sx&dx_6
+      name: witch_side_idle_4
       rect:
         serializedVersion: 2
-        x: 792
+        x: 37
         y: 0
-        width: 361
-        height: 344
+        width: 396
+        height: 600
       alignment: 9
-      pivot: {x: 0.7126012, y: 0.5451862}
+      pivot: {x: 0.43363833, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: move_sx&dx_7
+      name: witch_side_idle_5
       rect:
         serializedVersion: 2
-        x: 1175
+        x: 568
         y: 0
-        width: 337
-        height: 366
+        width: 396
+        height: 592
       alignment: 9
-      pivot: {x: 0.76521856, y: 0.4973455}
+      pivot: {x: 0.4336386, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
