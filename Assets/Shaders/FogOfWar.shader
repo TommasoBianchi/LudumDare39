@@ -18,6 +18,7 @@ Properties {
     _FogRadius ("FogRadius", Float) = 1.0
     _Player1_Pos ("_Player1_Pos", Vector) = (0,0,0,1)
     _Player2_Pos ("_Player2_Pos", Vector) = (0,0,0,1)
+    _Player3_Pos ("_Player3_Pos", Vector) = (0,0,0,1)
 	_Fade_Fog ("_Fade_Fog", int) = 0
 }
 
@@ -35,6 +36,7 @@ SubShader {
     float     _FogRadius;
     float4     _Player1_Pos;
     float4     _Player2_Pos;
+    float4     _Player3_Pos;
 	int		  _Fade_Fog;
 
     struct Input {
@@ -54,11 +56,13 @@ SubShader {
 
 		float dist1 = clamp(length(_Player1_Pos.xy - IN.location.xy) / _FogRadius, 0.0, 1.0);
 		float dist2 = clamp(length(_Player2_Pos.xy - IN.location.xy) / _FogRadius, 0.0, 1.0);
-		float fadeAlpha = dist1 * dist2;
+		float dist3 = clamp(length(_Player3_Pos.xy - IN.location.xy) / _FogRadius, 0.0, 1.0);
+		float fadeAlpha = dist1 * dist2 * dist3;
 
 		float plainAlpha1 = (_FogRadius - length(_Player1_Pos.xy - IN.location.xy)) < 0;
 		float plainAlpha2 = (_FogRadius - length(_Player2_Pos.xy - IN.location.xy)) < 0;
-		float plainAlpha = plainAlpha1 && plainAlpha2;
+		float plainAlpha3 = (_FogRadius - length(_Player3_Pos.xy - IN.location.xy)) < 0;
+		float plainAlpha = plainAlpha1 && plainAlpha2 && plainAlpha3;
 
 		float alpha = (fadeAlpha * (_Fade_Fog > 0)) + (plainAlpha * (_Fade_Fog <= 0));
 

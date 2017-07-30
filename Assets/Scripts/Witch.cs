@@ -77,7 +77,7 @@ public class Witch : MonoBehaviour, IDamageable {
 
 		// TEMP
 		skillset.Add("Q", new AbilityHealOverTime());
-		skillset.Add("E", new AbilityHealOverTime());
+		skillset.Add("E", new AbilityFireball());
 	}
 		
 
