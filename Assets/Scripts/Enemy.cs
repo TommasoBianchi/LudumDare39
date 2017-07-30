@@ -30,6 +30,10 @@ public class Enemy : MonoBehaviour, IDamageable {
 	[SerializeField]
 	private int maxSouls;
 
+	private Color oldColor;
+	private float oldColorTimeChange;
+	private float oldColorTimeBetween = 0.3f;
+	private bool isRed = false;
 
     private string name;
 
@@ -51,6 +55,7 @@ public class Enemy : MonoBehaviour, IDamageable {
     void Update()
     {
         seekClosest();
+		checkDeactivateDamageRedEffect ();
     }
 
 
@@ -97,5 +102,22 @@ public class Enemy : MonoBehaviour, IDamageable {
     {
         hp -= damage;
         checkHealth();
+		activateDamageRedEffect ();
+		Vector3 dir = Input.mousePosition - transform.position;
+		GetComponent<Rigidbody2D> ().AddForce ((new Vector2 (dir.x, dir.y)) * 0.01f, ForceMode2D.Impulse);
     }
+
+	private void activateDamageRedEffect() {
+		oldColor = GetComponent<SpriteRenderer> ().color;
+		GetComponent<SpriteRenderer> ().color = Color.red;
+		oldColorTimeChange = Time.time;
+		isRed = true;
+	}
+
+	private void checkDeactivateDamageRedEffect() {
+		if (isRed && Time.time > oldColorTimeChange + oldColorTimeBetween) {
+			GetComponent<SpriteRenderer> ().color = oldColor;
+			isRed = false;
+		}
+	}
 }
