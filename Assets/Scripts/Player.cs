@@ -61,6 +61,7 @@ public class Player : MonoBehaviour, IDamageable
         coneRaycaster = GetComponent<ConeRaycaster>();
         inside = true;
 
+		GetComponentInChildren<TextMesh> ().text = Instantiator.GetRandomName ();
 		Instantiate (Spawn, transform.position, Quaternion.identity);
     }
 

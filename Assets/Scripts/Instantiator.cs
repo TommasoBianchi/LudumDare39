@@ -17,15 +17,7 @@ public static class Instantiator {
 		Enemy eo = GameObject.Instantiate (e, pos, rot);
 
 		// Choose name
-		if (names.Count == 0) {
-			int n = Random.Range (1, 5);
-			Item item = JsonUtility.FromJson<Item> (System.IO.File.ReadAllText ("Assets/Resources/names" + n + ".json"));
-			if (!names.Contains (item.items [0])) {
-				names.AddRange (item.items);
-			}
-		}
-		int idx = Random.Range (0, names.Count);
-		string name = names [idx];
+		string name = GetRandomName();
 		eo.GetComponentInChildren<TextMesh> ().text = name;
 
 		// Choose scale
@@ -35,5 +27,17 @@ public static class Instantiator {
 
 	private class Item {
 		public List<string> items;
+	}
+
+	public static string GetRandomName() {
+		if (names.Count == 0) {
+			int n = Random.Range (1, 5);
+			Item item = JsonUtility.FromJson<Item> (System.IO.File.ReadAllText ("Assets/Resources/names" + n + ".json"));
+			if (!names.Contains (item.items [0])) {
+				names.AddRange (item.items);
+			}
+		}
+		int idx = Random.Range (0, names.Count);
+		return names [idx];
 	}
 }

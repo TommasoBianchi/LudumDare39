@@ -45,7 +45,7 @@ namespace AdvancedSpawnerNamespace {
 		}
 
 		private void fillEnemyDistributions() {
-			while (Time.time > secondsForLevels * generatedLevels) {
+			while (Time.timeSinceLevelLoad > secondsForLevels * generatedLevels) {
 				if (nextLevelToGenerate % 3 == 1) {
 					/*
 					 * For 30 seconds, generate a simple enemy every 7*e^(-currentLevel/50)

@@ -17,6 +17,7 @@ public class EndGameDeathPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		startTime = Time.time;
+		FadeObject.Init ();
 	}
 	
 	// Update is called once per frame

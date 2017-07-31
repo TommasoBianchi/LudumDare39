@@ -20,6 +20,7 @@ public class EndGameDeathWitch : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		startTime = Time.time;
+		FadeObject.Init ();
 		List<GameObject> toBeDestroyed = new List<GameObject> ();
 		toBeDestroyed.AddRange (GameObject.FindGameObjectsWithTag ("Enemy"));
 		GameObject player = GameObject.FindWithTag ("Player");
