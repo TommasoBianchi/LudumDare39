@@ -14,7 +14,7 @@ namespace AdvancedSpawnerNamespace {
 		[SerializeField]
 		private int nextLevelToGenerate = 0;
 		private int generatedLevels = 0;
-		private float secondsForLevels = 30f;
+		private float secondsForLevels = 20f;
 
 		void Start() {
 			enemyManager = GameObject.FindGameObjectWithTag ("SpawnerManager").GetComponent<EnemyManager> ();
@@ -48,10 +48,10 @@ namespace AdvancedSpawnerNamespace {
 			while (Time.timeSinceLevelLoad > secondsForLevels * generatedLevels) {
 				if (nextLevelToGenerate % 3 == 1) {
 					/*
-					 * For 30 seconds, generate a simple enemy every 7*e^(-currentLevel/15)
+					 * For 20 seconds, generate a simple enemy every 7*e^(-currentLevel/15)
 					 */
-					float clock = 7f * Mathf.Exp (-nextLevelToGenerate / 15);
-					int howMany = (int)Mathf.Floor (30f / clock);
+					float clock = 8f * Mathf.Exp (-nextLevelToGenerate / 15);
+					int howMany = (int)Mathf.Floor (20f / clock);
 					EnemyDistribution ed = new EnemyDistribution (secondsForLevels * generatedLevels, clock, DistributionType.Uniform);
 					float linearPos = 0f;
 					for (int i = 0; i < howMany; i++) {
@@ -64,10 +64,10 @@ namespace AdvancedSpawnerNamespace {
 					EnemyDistributions.Add (ed);
 				} else if (nextLevelToGenerate % 3 == 2) {
 					/*
-					 * For 30 seconds, 2 MiniEnemy spawns every 10*e^(-currentLevel/15), from same sides
+					 * For 20 seconds, 2 MiniEnemy spawns every 10*e^(-currentLevel/15), from same sides
 					 */ 
-					float clock = 10f * Mathf.Exp (-nextLevelToGenerate / 15);
-					int howMany = (int)Mathf.Floor (30f / clock);
+					float clock = 8f * Mathf.Exp (-nextLevelToGenerate / 15);
+					int howMany = (int)Mathf.Floor (20f / clock);
 					for (int k = 0; k < howMany; k++) {
 						EnemyDistribution ed = new EnemyDistribution (secondsForLevels * generatedLevels + k * clock, 0, DistributionType.Uniform);
 						float linearPos = Random.Range (0f, 1f);
@@ -78,10 +78,10 @@ namespace AdvancedSpawnerNamespace {
 					}
 				} else {
 					/*
-					 * For 30 seconds, 2 MiniEnemy spawns every 10*e^(-currentLevel/15), from opposite sides
+					 * For 20 seconds, 2 MiniEnemy spawns every 10*e^(-currentLevel/15), from opposite sides
 					 */ 
-					float clock = 10f * Mathf.Exp (-nextLevelToGenerate / 15);
-					int howMany = (int)Mathf.Floor (30f / clock);
+					float clock = 8f * Mathf.Exp (-nextLevelToGenerate / 15);
+					int howMany = (int)Mathf.Floor (20f / clock);
 					for (int k = 0; k < howMany; k++) {
 						EnemyDistribution ed = new EnemyDistribution (secondsForLevels * generatedLevels + k * clock, 0, DistributionType.Uniform);
 						float linearPos1 = Random.Range (0f, 1f);
