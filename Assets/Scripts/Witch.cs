@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Abilities;
 using AICoreUnity;
+using UnityEngine.UI;
 
 public class Witch : MonoBehaviour, IDamageable
 {
@@ -61,6 +62,9 @@ public class Witch : MonoBehaviour, IDamageable
         }
         set
         {
+			if (value > souls) {
+				soulsCounter.GetComponent<Text> ().text = "" + (System.Convert.ToInt32(soulsCounter.GetComponent<Text> ().text) + (value - souls));
+			}
             souls = Mathf.Min(value, maxSoulNumber);
             if (souls <= 0)
             {
@@ -83,6 +87,7 @@ public class Witch : MonoBehaviour, IDamageable
     private GameObject barrier;
 
 	public Transform EndGameDeathWitch;
+	private GameObject soulsCounter; 
 
     private float accumulator = 0.0f;
     [SerializeField]
@@ -90,6 +95,7 @@ public class Witch : MonoBehaviour, IDamageable
 
     void Start()
     {
+		soulsCounter = GameObject.FindWithTag ("SoulCounter");
         player = GameObject.FindGameObjectWithTag("Player");
         barrier = GameObject.FindGameObjectWithTag("Barrier");
     }
