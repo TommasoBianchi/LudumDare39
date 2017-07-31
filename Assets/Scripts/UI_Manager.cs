@@ -68,5 +68,9 @@ public class UI_Manager : MonoBehaviour {
         gameUI.GetComponent<Canvas>().enabled = true;
         PauseCanvas.GetComponent<Canvas>().enabled = false;
         Time.timeScale = 1;
-    }  
+    }
+
+	public void QuitApp() {
+		Application.Quit ();
+	}
 }

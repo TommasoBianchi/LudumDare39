@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using System.IO;
-using UnityEditor;
 
 public static class Instantiator {
 
