@@ -1,0 +1,188 @@
+fileFormatVersion: 2
+guid: 8456f7cda91a1a64eb66549afc746f68
+timeCreated: 1501412699
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: move_sx&dx_0
+    21300002: move_sx&dx_1
+    21300004: move_sx&dx_2
+    21300006: move_sx&dx_3
+    21300008: move_sx&dx_4
+    21300010: move_sx&dx_5
+    21300012: move_sx&dx_6
+    21300014: move_sx&dx_7
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: move_sx&dx_0
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 483
+        width: 249
+        height: 363
+      alignment: 9
+      pivot: {x: 0.37514755, y: 0.5026763}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_1
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 483
+        width: 264
+        height: 346
+      alignment: 9
+      pivot: {x: 0.41904104, y: 0.49438423}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_2
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 488
+        width: 249
+        height: 361
+      alignment: 9
+      pivot: {x: 0.38685283, y: 0.4838529}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_3
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 488
+        width: 264
+        height: 343
+      alignment: 9
+      pivot: {x: 0.43008098, y: 0.50283235}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 348
+        height: 344
+      alignment: 9
+      pivot: {x: 0.73450166, y: 0.55083454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_5
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 0
+        width: 347
+        height: 367
+      alignment: 9
+      pivot: {x: 0.7379773, y: 0.5158828}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_6
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 0
+        width: 361
+        height: 344
+      alignment: 9
+      pivot: {x: 0.7126012, y: 0.5451862}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: move_sx&dx_7
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 0
+        width: 337
+        height: 366
+      alignment: 9
+      pivot: {x: 0.76521856, y: 0.4973455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

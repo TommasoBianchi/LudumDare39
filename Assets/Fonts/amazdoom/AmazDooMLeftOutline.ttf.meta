@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: efd9a0d71f613004696dc94cca4b0155
+timeCreated: 1501439194
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: AmazDooMLeftOutline
+  fontNames:
+  - AmazDooMLeftOutline
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
